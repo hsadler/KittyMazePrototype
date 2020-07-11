@@ -1,0 +1,12 @@
+
+
+- TODO NEXT:
+    - POC object traversal through maze from start to finish
+    - POC procedural maze creation algo
+
+
+- SYSTEMS:
+    - MazeSceneManager
+    - start-point
+    - end-point
+    - scene reload

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DragFingerMoveScript : MonoBehaviour {
+public class TouchMoveScript : MonoBehaviour {
  
  
     private Vector3 touchPosition;
