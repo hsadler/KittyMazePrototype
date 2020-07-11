@@ -1,13 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MazeSceneManager : MonoBehaviour {
 
-
-	// scene managers
-	public MazeSceneObjective mazeSceneObjective;
-	public MazeSceneObjectPlacement mazeSceneObjectPlacement;
 
 	// scene objects
 	public GameObject playerObject;
@@ -24,15 +21,17 @@ public class MazeSceneManager : MonoBehaviour {
 		} else {
 			Destroy(gameObject);
 		}
-		this.mazeSceneObjective = new MazeSceneObjective();
-		this.mazeSceneObjectPlacement = new MazeSceneObjectPlacement();
 	}
 
 	void Start() {
-		PlacePlayerObject();
+		this.PlacePlayerObject();
 	}
 
 	// INTERFACE METHODS
+
+	public void MazeComplete() {
+		this.ReloadMazeScene();
+	}
 
 	// IMPLEMENTATION METHODS
 
@@ -44,6 +43,10 @@ public class MazeSceneManager : MonoBehaviour {
 			0
 		); 
 		GameObject.Instantiate(playerObject, pos, Quaternion.identity);
+	}
+
+	private void ReloadMazeScene() {
+		SceneManager.LoadScene("SampleScene");
 	}
 
 	

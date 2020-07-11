@@ -6,6 +6,7 @@ TagManager:
   tags:
   - StartPoint
   - EndPoint
+  - PlayerObject
   layers:
   - Default
   - TransparentFX
