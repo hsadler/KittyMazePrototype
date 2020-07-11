@@ -6,14 +6,14 @@ public class DragFingerMoveScript : MonoBehaviour {
  
  
     private Vector3 touchPosition;
-    private Rigidbody2D rb;
+    private Rigidbody rb;
     private Vector3 direction;
     private float moveSpeed = 10f;
 
     
     // Use this for initialization
     private void Start() {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
