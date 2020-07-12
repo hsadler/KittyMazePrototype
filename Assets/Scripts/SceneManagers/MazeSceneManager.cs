@@ -46,7 +46,7 @@ public class MazeSceneManager : MonoBehaviour {
 	}
 
 	private void ReloadMazeScene() {
-		SceneManager.LoadScene("SampleScene");
+		SceneManager.LoadScene("MazeScene");
 	}
 
 	
