@@ -1,12 +1,18 @@
 
 
 - TODO NEXT:
-    - POC object traversal through maze from start to finish
+    X POC object traversal through maze from start to finish
     - POC procedural maze creation algo
 
 
 - SYSTEMS:
-    - MazeSceneManager
-    - start-point
-    - end-point
-    - scene reload
+    X MazeSceneManager
+    X start-point
+    X end-point
+    X scene reload
+    - maze data models:
+        - maze
+        - cell
+        - wall
+    - maze generation service
+    - rendering of maze model
