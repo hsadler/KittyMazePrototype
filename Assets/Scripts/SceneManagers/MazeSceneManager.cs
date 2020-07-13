@@ -7,10 +7,12 @@ using UnityEngine.SceneManagement;
 public class MazeSceneManager : MonoBehaviour {
 
 
-	// scene objects
-	public GameObject playerObject;
+	// scene object prefabs
+	public GameObject playerObjectPrefab;
+	public GameObject mazeCellPrefab;
+	public GameObject mazeWallPrefab;
 	
-	// models
+	// data models
 	public Maze mazeModel;
 
 	
@@ -46,8 +48,18 @@ public class MazeSceneManager : MonoBehaviour {
 		// TODO: implement
 		List<MazeCell> mazeCells = mazeModel.positionToMazeCell.Values.ToList();
 		// instantiate maze cell game objects
+		foreach (MazeCell mazeCellModel in mazeCells) {
+			GameObject mazeCellGO = Instantiate(mazeCellPrefab);
+			var mazeCellScript = mazeCellGO.GetComponent<MazeCellScript>();
+			mazeCellScript.mazeCellModel = mazeCellModel;
+		}
 		List<MazeWall> mazeWalls = mazeModel.positionToMazeWall.Values.ToList();
 		// instantiate maze wall game objects
+		foreach (MazeWall mazeWallModel in mazeWalls) {
+			GameObject mazeWallGO = Instantiate(mazeWallPrefab);
+			var mazeWallScript = mazeWallGO.GetComponent<MazeWallScript>();
+			mazeWallScript.mazeWallModel = mazeWallModel;
+		}
 	}
 
 	private void PlacePlayerObject() {
@@ -55,9 +67,9 @@ public class MazeSceneManager : MonoBehaviour {
 		var pos = new Vector3(
 			startPoint.transform.position.x, 
 			startPoint.transform.position.y, 
-			0
+			-1
 		); 
-		GameObject.Instantiate(playerObject, pos, Quaternion.identity);
+		GameObject.Instantiate(playerObjectPrefab, pos, Quaternion.identity);
 	}
 
 	private void ReloadMazeScene() {

@@ -26,6 +26,7 @@ public class MazeGenerator {
 		var positionToMazeCellWall = new Dictionary<string, MazeWall>();
 		// keep track of the last maze cell
 		MazeCell lastMazeCell = null;
+		
 		// for each position instantiate maze cells and 
 		// point to previous maze cell to create linked list
 		for(int i = 0; i < height; i++) {
@@ -42,6 +43,7 @@ public class MazeGenerator {
 				);
 			} 
 		}
+		
 		// for every maze cell in the linked list set all the neighbor cells
 		MazeCell currentMazeCell = lastMazeCell;
 		MazeCell previousMazeCell = null;
@@ -71,6 +73,7 @@ public class MazeGenerator {
 			currentMazeCell.mazeCell_S = southNeighborCell;
 			currentMazeCell.mazeCell_E = eastNeighborCell;
 			currentMazeCell.mazeCell_W = westNeighborCell;
+			
 			// instantiate walls and assign to maze cells
 			if(currentMazeCell.position_Y == 0) {
 				// bottom row cell
@@ -146,35 +149,45 @@ public class MazeGenerator {
 					false
 				);
 			}
+			
 			// add maze cell walls to dict
-			positionToMazeCellWall.Add(
-				this.GetFormattedPosition(
-					currentMazeCell.mazeCell_N.position_X, 
-					currentMazeCell.mazeCell_N.position_Y
-				), 
-				currentMazeCell.mazeWall_N
-			);
-			positionToMazeCellWall.Add(
-				this.GetFormattedPosition(
-					currentMazeCell.mazeCell_S.position_X, 
-					currentMazeCell.mazeCell_S.position_Y
-				), 
-				currentMazeCell.mazeWall_S
-			);
-			positionToMazeCellWall.Add(
-				this.GetFormattedPosition(
-					currentMazeCell.mazeCell_E.position_X, 
-					currentMazeCell.mazeCell_E.position_Y
-				), 
-				currentMazeCell.mazeWall_E
-			);
-			positionToMazeCellWall.Add(
-				this.GetFormattedPosition(
-					currentMazeCell.mazeCell_W.position_X, 
-					currentMazeCell.mazeCell_W.position_Y
-				), 
-				currentMazeCell.mazeWall_W
-			);
+			if(currentMazeCell.mazeWall_N != null) {
+				positionToMazeCellWall.Add(
+					this.GetFormattedPosition(
+						currentMazeCell.mazeWall_N.position_X, 
+						currentMazeCell.mazeWall_N.position_Y
+					), 
+					currentMazeCell.mazeWall_N
+				);
+			}
+			if(currentMazeCell.mazeWall_S != null) {
+				positionToMazeCellWall.Add(
+					this.GetFormattedPosition(
+						currentMazeCell.mazeWall_S.position_X, 
+						currentMazeCell.mazeWall_S.position_Y
+					), 
+					currentMazeCell.mazeWall_S
+				);
+			}
+			if(currentMazeCell.mazeWall_E != null) {
+				positionToMazeCellWall.Add(
+					this.GetFormattedPosition(
+						currentMazeCell.mazeWall_E.position_X, 
+						currentMazeCell.mazeWall_E.position_Y
+					), 
+					currentMazeCell.mazeWall_E
+				);
+			}
+			if(currentMazeCell.mazeWall_W != null) {
+				positionToMazeCellWall.Add(
+					this.GetFormattedPosition(
+						currentMazeCell.mazeWall_W.position_X, 
+						currentMazeCell.mazeWall_W.position_Y
+					), 
+					currentMazeCell.mazeWall_W
+				);
+			}
+
 			previousMazeCell = currentMazeCell; 
 			currentMazeCell = currentMazeCell.nextMazeCell;
 		}
@@ -202,7 +215,7 @@ public class MazeGenerator {
 		return null;
 	}
 
-	public string GetFormattedPosition(int posX, int posY) {
+	public string GetFormattedPosition(float posX, float posY) {
 		return posX.ToString() + "," + posY.ToString();
 	}
 

@@ -11,8 +11,8 @@
     X end-point
     X scene reload
     - maze data models:
-        - maze
-        - cell
-        - wall
+        X maze
+        X cell
+        X wall
     - maze generation service
     - rendering of maze model
