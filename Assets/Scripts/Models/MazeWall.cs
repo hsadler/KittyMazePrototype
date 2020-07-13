@@ -10,4 +10,10 @@ public class MazeWall {
 	public bool isOutwall = false;
 
 
+	public MazeWall(bool isOpen, bool isOutwall) {
+		this.isOpen = isOpen;
+		this.isOutwall = isOutwall;
+	}
+	
+
 }
