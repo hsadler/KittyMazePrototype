@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,9 @@ public class MazeSceneManager : MonoBehaviour {
 
 	// scene objects
 	public GameObject playerObject;
+	
+	// models
+	public Maze mazeModel;
 
 	
 	// the static reference to the singleton instance
@@ -21,9 +25,12 @@ public class MazeSceneManager : MonoBehaviour {
 		} else {
 			Destroy(gameObject);
 		}
+		var mazeGen = new MazeGenerator();
+		this.mazeModel = mazeGen.GenerateMaze(10, 10);
 	}
 
 	void Start() {
+		this.RenderMazeObjects();
 		this.PlacePlayerObject();
 	}
 
@@ -34,6 +41,14 @@ public class MazeSceneManager : MonoBehaviour {
 	}
 
 	// IMPLEMENTATION METHODS
+
+	private void RenderMazeObjects() {
+		// TODO: implement
+		List<MazeCell> mazeCells = mazeModel.positionToMazeCell.Values.ToList();
+		// instantiate maze cell game objects
+		List<MazeWall> mazeWalls = mazeModel.positionToMazeWall.Values.ToList();
+		// instantiate maze wall game objects
+	}
 
 	private void PlacePlayerObject() {
 		GameObject startPoint = GameObject.FindGameObjectWithTag("StartPoint");
