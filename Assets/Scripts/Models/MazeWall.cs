@@ -1,18 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
-public class MazeWall : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class MazeWall {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	// MODEL FOR MAZE WALL
+
+
+	public bool isOpen = false;
+	public bool isOutwall = false;
+
+
 }

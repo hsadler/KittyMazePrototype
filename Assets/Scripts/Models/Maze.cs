@@ -2,17 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Maze : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class Maze {
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	// MODEL FOR MAZE
+
 }
