@@ -9,7 +9,11 @@ public class MazeCellScript : MonoBehaviour {
     
     
     void Start() {
-        transform.position = new Vector3(mazeCellModel.position_X, mazeCellModel.position_Y, -1);
+        transform.localPosition = new Vector3(
+            mazeCellModel.position_X, 
+            mazeCellModel.position_Y, 
+            -1
+        );
     }
 
     void Update() {}

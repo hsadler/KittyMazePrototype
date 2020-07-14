@@ -136,12 +136,12 @@ PrefabInstance:
     - target: {fileID: 98745858893280530, guid: 07aebc9d02d3bcb4bb749a4fa9e105b5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 98745858893280530, guid: 07aebc9d02d3bcb4bb749a4fa9e105b5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 98745858893280530, guid: 07aebc9d02d3bcb4bb749a4fa9e105b5,
         type: 3}
@@ -451,12 +451,12 @@ PrefabInstance:
     - target: {fileID: 8651952621261716835, guid: 11941a2720514ef4289de2d068440475,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8651952621261716835, guid: 11941a2720514ef4289de2d068440475,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8651952621261716835, guid: 11941a2720514ef4289de2d068440475,
         type: 3}
@@ -661,5 +661,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2027953270712482648, guid: e0246e4f992708d48af21dc7031ff75b,
+        type: 3}
+      propertyPath: mazeContainerPrefab
+      value: 
+      objectReference: {fileID: 7415382843541125460, guid: cf9f71aa915bfc94591b7818bc453292,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0246e4f992708d48af21dc7031ff75b, type: 3}
