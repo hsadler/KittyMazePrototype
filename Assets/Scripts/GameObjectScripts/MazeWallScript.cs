@@ -22,8 +22,6 @@ public class MazeWallScript : MonoBehaviour {
 				transform.eulerAngles.y, 
 				zRotation
 			);
-			// TEST: wall off
-			wall.SetActive(false);
 		}
 	}
 

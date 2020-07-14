@@ -20,8 +20,10 @@ public class MazeGenerator {
 		maze = this.ApplyDepthFirstBacktrackingToMaze(maze);
 		return maze;
 	}
+	
+	// IMPLEMENTATION METHODS
 
-	public Maze GenerateInitializedMaze(int width, int height) {
+	private Maze GenerateInitializedMaze(int width, int height) {
 		var positionToMazeCell = new Dictionary<string, MazeCell>();
 		var positionToMazeCellWall = new Dictionary<string, MazeWall>();
 		// keep track of the last maze cell
@@ -200,7 +202,7 @@ public class MazeGenerator {
 		);
 	}
 
-	public MazeCell GetMazeCellNeighborCell(
+	private MazeCell GetMazeCellNeighborCell(
 		Dictionary<string, MazeCell> positionToMazeCell, 
 		MazeCell cell, 
 		string neighborDirection
@@ -215,11 +217,11 @@ public class MazeGenerator {
 		return null;
 	}
 
-	public string GetFormattedPosition(float posX, float posY) {
+	private string GetFormattedPosition(float posX, float posY) {
 		return posX.ToString() + "," + posY.ToString();
 	}
 
-	public string GetFormattedMazeCellPositionForNeighbor(
+	private string GetFormattedMazeCellPositionForNeighbor(
 		MazeCell cell, 
 		string neighborDirection
 	) {
@@ -236,8 +238,6 @@ public class MazeGenerator {
 		}
 		return this.GetFormattedPosition(posX, posY);
 	}
-
-	// IMPLEMENTATION METHODS
 
 	private Maze ApplyDepthFirstBacktrackingToMaze(Maze maze) {
 		// STUB
