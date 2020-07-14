@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MazeGenerator {
@@ -240,9 +241,40 @@ public class MazeGenerator {
 	}
 
 	private Maze ApplyDepthFirstBacktrackingToMaze(Maze maze) {
+
 		// STUB
 		// TODO: implement
+
+		var backtrackMem = new List<MazeCell>();
+		var mazeCellsVisited = new Dictionary<string, MazeCell>();
+		// select random cell to start and memorize
+		MazeCell currentMazeCell = this.SelectRandomMazeCell(maze);
+		MazeCell initialMazeCell = currentMazeCell;
+		do {
+			// #1 search for random direction
+			// if available:
+				// move to next cell and remove wall
+				// put previous cell in mem stack
+				// goto #1
+			// else:
+				// backtrack 1 cell
+				// goto #1
+		} while(currentMazeCell != initialMazeCell);
 		return maze;
 	} 
+	
+	private MazeCell SelectRandomMazeCell(Maze maze) {
+		var mazeCells = maze.positionToMazeCell.Values.ToList();
+		int randomIndex = Random.Range(0, mazeCells.Count);
+		return mazeCells[randomIndex];
+	}
+
+	// private MazeCell SearchForRandomNeighborMazeCellFromCell(
+	// 	MazeCell inputCell, 
+	// 	Dictionary<string, MazeCell> mazeCellsVisited
+	// ) {
+
+	// }
+
 
 }
