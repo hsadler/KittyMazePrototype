@@ -2,7 +2,7 @@
 
 - TODO NEXT:
     X POC object traversal through maze from start to finish
-    - POC procedural maze creation algo
+    X POC procedural maze creation algo
 
 
 - SYSTEMS:
@@ -10,9 +10,19 @@
     X start-point
     X end-point
     X scene reload
-    - maze data models:
+    X maze data models:
         X maze
         X cell
         X wall
-    - maze generation service
-    - rendering of maze model
+    X maze generation service
+    X rendering of maze model
+    - kitty item unlock mechanic
+    - kitty item use system
+    - maze stats data collection
+    - 
+
+
+- UX:
+    - Kitty Scene (opening scene)
+    - Kitty dress up Scene
+    - 

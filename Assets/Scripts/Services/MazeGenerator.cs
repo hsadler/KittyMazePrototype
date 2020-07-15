@@ -179,7 +179,6 @@ public class MazeGenerator {
 				// backtrack one cell and try again in next loop
 				currentMazeCell = (MazeCell)backtrackMem.Pop();
 			}
-			// TODO: there's probably a bug where the initial maze cell needs to be fully explored
 		} while(currentMazeCell != initialMazeCell);
 		return maze;
 	} 
