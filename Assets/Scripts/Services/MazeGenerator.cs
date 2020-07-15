@@ -154,6 +154,15 @@ public class MazeGenerator {
 		MazeCell currentMazeCell = this.SelectRandomMazeCell(maze);
 		MazeCell initialMazeCell = currentMazeCell;
 		do {
+			// mark current maze cell as visited
+			string currPos = this.GetFormattedPosition(
+				currentMazeCell.position_X, 
+				currentMazeCell.position_Y
+			); 
+			if(!mazeCellsVisited.ContainsKey(currPos)) {
+				mazeCellsVisited.Add(currPos, currentMazeCell);
+			}
+			// check for eligible direction
 			string eligibleDirection = this.SearchForEligibleDirectionFromCell(
 				currentMazeCell, 
 				mazeCellsVisited
