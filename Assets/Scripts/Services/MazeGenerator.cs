@@ -8,12 +8,6 @@ public class MazeGenerator {
 	// SERVICE FOR GENERATING MAZE DATA STRUCTURES
 
 
-	const string NORTH = "NORTH";
-	const string SOUTH = "SOUTH";
-	const string EAST = "EAST";
-	const string WEST = "WEST";
-
-
 	// INTERFACE METHODS
 
 	public Maze GenerateMaze(int width, int height) {
@@ -51,165 +45,78 @@ public class MazeGenerator {
 		MazeCell currentMazeCell = lastMazeCell;
 		MazeCell previousMazeCell = null;
 		while(currentMazeCell != null) {
-			var northNeighborCell = GetMazeCellNeighborCell(
-				positionToMazeCell, 
-				currentMazeCell, 
-				MazeGenerator.NORTH
-			);
-			var southNeighborCell = GetMazeCellNeighborCell(
-				positionToMazeCell, 
-				currentMazeCell, 
-				MazeGenerator.SOUTH
-			);
-			var eastNeighborCell = GetMazeCellNeighborCell(
-				positionToMazeCell, 
-				currentMazeCell, 
-				MazeGenerator.EAST
-			);
-			var westNeighborCell = GetMazeCellNeighborCell(
-				positionToMazeCell, 
-				currentMazeCell, 
-				MazeGenerator.WEST
-			);
-			// point maze cells to one another
-			currentMazeCell.mazeCell_N = northNeighborCell;
-			currentMazeCell.mazeCell_S = southNeighborCell;
-			currentMazeCell.mazeCell_E = eastNeighborCell;
-			currentMazeCell.mazeCell_W = westNeighborCell;
-			
-			// instantiate walls and assign to maze cells
-			if(currentMazeCell.position_Y == 0) {
-				// bottom row cell
-				currentMazeCell.mazeWall_N = new MazeWall(
-					currentMazeCell.position_X,
-					currentMazeCell.position_Y + 0.5f,
-					false, 
-					false,
-					true
+			foreach(string direction in MazeCell.directions) {
+				MazeCell nCell = this.GetMazeCellNeighborCellFromLookupDict(
+					positionToMazeCell, 
+					currentMazeCell, 
+					direction
 				);
-				currentMazeCell.mazeWall_S = new MazeWall(
-					currentMazeCell.position_X,
-					currentMazeCell.position_Y - 0.5f,
-					false, 
-					true,
-					true
-				);
-			} else if(currentMazeCell.position_Y == height - 1) {
-				// top row cell
-				currentMazeCell.mazeWall_N = new MazeWall(
-					currentMazeCell.position_X,
-					currentMazeCell.position_Y + 0.5f,
-					false, 
-					true,
-					true
-				);
-				currentMazeCell.mazeWall_S = southNeighborCell.mazeWall_N;
-			} else {
-				// inner row cell
-				currentMazeCell.mazeWall_N = new MazeWall(
-					currentMazeCell.position_X,
-					currentMazeCell.position_Y + 0.5f,
-					false, 
-					false,
-					true
-				);
-				currentMazeCell.mazeWall_S = southNeighborCell.mazeWall_N;
+				MazeWall sharedWall = null;
+				if(nCell != null) {
+					currentMazeCell.SetNeighborMazeCell(direction, nCell);
+					sharedWall = nCell.GetMazeWall(MazeCell.GetOppositeDirection(direction));
+				}
+				if(sharedWall != null) {
+					currentMazeCell.SetWall(direction, sharedWall);
+				} else {
+					float xOffset = 0;
+					float yOffset = 0;
+					if(direction == MazeCell.NORTH) {
+						yOffset = 0.5f;
+					} else if(direction == MazeCell.SOUTH) {
+						yOffset = -0.5f;
+					} else if(direction == MazeCell.EAST) {
+						xOffset = 0.5f;
+					} else if(direction == MazeCell.WEST) {
+						xOffset = -0.5f;
+					}
+					bool isOutwall = (
+						(direction == MazeCell.NORTH && currentMazeCell.position_Y == height -1) ||
+						(direction == MazeCell.SOUTH && currentMazeCell.position_Y == 0) ||
+						(direction == MazeCell.EAST && currentMazeCell.position_X == 0) ||
+						(direction == MazeCell.WEST && currentMazeCell.position_X == width -1)
+					);
+					bool isHorizontal = direction == MazeCell.NORTH || direction == MazeCell.SOUTH;
+					var mazeWall = new MazeWall(
+						currentMazeCell.position_X + xOffset,
+						currentMazeCell.position_Y + yOffset,
+						true,
+						isOutwall,
+						isHorizontal
+					); 
+					currentMazeCell.SetWall(direction, mazeWall);
+					positionToMazeCellWall.Add(
+						this.GetFormattedPosition(
+							mazeWall.position_X,
+							mazeWall.position_Y
+						), 
+						mazeWall
+					);
+				}
 			}
-			if(currentMazeCell.position_X == 0) {
-				// left column
-				currentMazeCell.mazeWall_W = new MazeWall(
-					currentMazeCell.position_X - 0.5f,
-					currentMazeCell.position_Y,
-					false, 
-					true,
-					false
-				);
-				currentMazeCell.mazeWall_E = new MazeWall(
-					currentMazeCell.position_X + 0.5f,
-					currentMazeCell.position_Y,
-					false, 
-					false,
-					false
-				);
-			} else if(currentMazeCell.position_X == width -1) {
-				// right column
-				currentMazeCell.mazeWall_W = currentMazeCell.mazeCell_W.mazeWall_E;
-				currentMazeCell.mazeWall_E = new MazeWall(
-					currentMazeCell.position_X + 0.5f,
-					currentMazeCell.position_Y,
-					false, 
-					true,
-					false
-				);
-			} else {
-				// inner column
-				currentMazeCell.mazeWall_W = currentMazeCell.mazeCell_W.mazeWall_E;
-				currentMazeCell.mazeWall_E = new MazeWall(
-					currentMazeCell.position_X + 0.5f,
-					currentMazeCell.position_Y,
-					false, 
-					false,
-					false
-				);
-			}
-			
-			// add maze cell walls to dict
-			if(currentMazeCell.mazeWall_N != null) {
-				positionToMazeCellWall.Add(
-					this.GetFormattedPosition(
-						currentMazeCell.mazeWall_N.position_X, 
-						currentMazeCell.mazeWall_N.position_Y
-					), 
-					currentMazeCell.mazeWall_N
-				);
-			}
-			if(currentMazeCell.mazeWall_S != null) {
-				positionToMazeCellWall.Add(
-					this.GetFormattedPosition(
-						currentMazeCell.mazeWall_S.position_X, 
-						currentMazeCell.mazeWall_S.position_Y
-					), 
-					currentMazeCell.mazeWall_S
-				);
-			}
-			if(currentMazeCell.mazeWall_E != null) {
-				positionToMazeCellWall.Add(
-					this.GetFormattedPosition(
-						currentMazeCell.mazeWall_E.position_X, 
-						currentMazeCell.mazeWall_E.position_Y
-					), 
-					currentMazeCell.mazeWall_E
-				);
-			}
-			if(currentMazeCell.mazeWall_W != null) {
-				positionToMazeCellWall.Add(
-					this.GetFormattedPosition(
-						currentMazeCell.mazeWall_W.position_X, 
-						currentMazeCell.mazeWall_W.position_Y
-					), 
-					currentMazeCell.mazeWall_W
-				);
-			}
-
 			previousMazeCell = currentMazeCell; 
 			currentMazeCell = currentMazeCell.nextMazeCell;
 		}
-		return new Maze(
+
+		var maze = new Maze(
 			width, 
 			height, 
 			positionToMazeCell, 
 			lastMazeCell, 
 			positionToMazeCellWall
 		);
+		// this.TestValidateMaze(maze);
+
+		return maze;
 	}
 
-	private MazeCell GetMazeCellNeighborCell(
+	private MazeCell GetMazeCellNeighborCellFromLookupDict(
 		Dictionary<string, MazeCell> positionToMazeCell, 
-		MazeCell cell, 
+		MazeCell inputCell, 
 		string neighborDirection
 	) {
 		string neighborPos = GetFormattedMazeCellPositionForNeighbor(
-			cell, 
+			inputCell, 
 			neighborDirection
 		);
 		if(positionToMazeCell.ContainsKey(neighborPos)) {
@@ -228,37 +135,42 @@ public class MazeGenerator {
 	) {
 		int posX = cell.position_X;
 		int posY = cell.position_Y;
-		if(neighborDirection == NORTH) {
+		if(neighborDirection == MazeCell.NORTH) {
 			posY += 1;			
-		} else if(neighborDirection == SOUTH) {
+		} else if(neighborDirection == MazeCell.SOUTH) {
 			posY -= 1;
-		} else if(neighborDirection == WEST) {
+		} else if(neighborDirection == MazeCell.WEST) {
 			posX -= 1;
-		} else if(neighborDirection == EAST) {
+		} else if(neighborDirection == MazeCell.EAST) {
 			posX += 1;
 		}
 		return this.GetFormattedPosition(posX, posY);
 	}
 
 	private Maze ApplyDepthFirstBacktrackingToMaze(Maze maze) {
-
-		// STUB
-		// TODO: implement
-
-		var backtrackMem = new List<MazeCell>();
+		var backtrackMem = new Stack();
 		var mazeCellsVisited = new Dictionary<string, MazeCell>();
 		// select random cell to start and memorize
 		MazeCell currentMazeCell = this.SelectRandomMazeCell(maze);
 		MazeCell initialMazeCell = currentMazeCell;
 		do {
-			// #1 search for random direction
-			// if available:
-				// move to next cell and remove wall
-				// put previous cell in mem stack
-				// goto #1
-			// else:
-				// backtrack 1 cell
-				// goto #1
+			string eligibleDirection = this.SearchForEligibleDirectionFromCell(
+				currentMazeCell, 
+				mazeCellsVisited
+			);
+			if(eligibleDirection != null) {
+				// per the direction, remove the wall, memorize current maze cell, 
+				// and move to neighbor maze cell
+				var nCell = currentMazeCell.GetNeighborMazeCell(eligibleDirection);
+				var wall = currentMazeCell.GetMazeWall(eligibleDirection);
+				wall.isActive = false;
+				backtrackMem.Push(currentMazeCell);
+				currentMazeCell = nCell;
+			} else {
+				// backtrack one cell and try again in next loop
+				currentMazeCell = (MazeCell)backtrackMem.Pop();
+			}
+			// TODO: there's probably a bug where the initial maze cell needs to be fully explored
 		} while(currentMazeCell != initialMazeCell);
 		return maze;
 	} 
@@ -269,12 +181,54 @@ public class MazeGenerator {
 		return mazeCells[randomIndex];
 	}
 
-	// private MazeCell SearchForRandomNeighborMazeCellFromCell(
-	// 	MazeCell inputCell, 
-	// 	Dictionary<string, MazeCell> mazeCellsVisited
-	// ) {
+	private string SearchForEligibleDirectionFromCell(
+		MazeCell inputCell, 
+		Dictionary<string, MazeCell> mazeCellsVisited
+	) {
+		List<string> shuffledDirections = Functions.ShuffleStringList(MazeCell.directions);
+		foreach (string direction in shuffledDirections) {
+			var nCell = inputCell.GetNeighborMazeCell(direction);
+			if(nCell != null) {
+				string nCellPos = this.GetFormattedPosition(nCell.position_X, nCell.position_Y);
+				var wall = inputCell.GetMazeWall(direction);
+				if(wall == null) {
+					Debug.Log("wall not found..");
+				}
+				bool neighborCellIsEligible = ( 
+					!mazeCellsVisited.ContainsKey(nCellPos) && 
+					wall.isActive
+				);
+				if(neighborCellIsEligible) {
+					return direction;
+				}
+			}
+		}
+		return null;
+	}
 
-	// }
+	private void TestValidateMaze(Maze maze) {
+		var mazeCells = maze.positionToMazeCell.Values.ToList();
+		foreach(var cell in mazeCells) {
+			foreach(var direction in MazeCell.directions) {
+				var nCell = cell.GetNeighborMazeCell(direction);
+				if(nCell == null) {
+					Debug.Log(
+						"neighbor maze cell not found for cell at position: " + 
+						cell.position_X + ", " + 
+						cell.position_Y + " and direction: " + direction
+					);
+				}
+				var wall = cell.GetMazeWall(direction);
+				if(wall == null) {
+					Debug.Log(
+						"wall not found for cell at position: " + 
+						cell.position_X + ", " + 
+						cell.position_Y + " and direction: " + direction
+					); 
+				}
+			}
+		}
+	}
 
 
 }

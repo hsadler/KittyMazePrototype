@@ -25,7 +25,11 @@ public class MazeWallScript : MonoBehaviour {
 		}
 	}
 
-	void Update() {}
+	void Update() {
+		if(mazeWallModel.isActive != wall.activeSelf) {
+			wall.SetActive(mazeWallModel.isActive);
+		}
+	}
 
 
 }
