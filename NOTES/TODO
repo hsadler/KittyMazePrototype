@@ -16,13 +16,43 @@
         X wall
     X maze generation service
     X rendering of maze model
+    - kitty item database
     - kitty item unlock mechanic
     - kitty item use system
     - maze stats data collection
-    - 
+    - maze completion award
 
 
 - UX:
-    - Kitty Scene (opening scene)
-    - Kitty dress up Scene
-    - 
+    - KittyPresentation Scene (opening scene)
+    - KittyDressUp Scene
+    - KittyMaze Scene
+
+
+- DESIGN:
+    - kitty presentation:
+        - background
+        - kitty
+        - nav buttons
+        - multiple kitties?
+        - what kitty items?
+    - kitty dress up:
+        - background
+        - kitty
+        - item scroll/search
+        - item placement on kitty
+        - back nav
+    - maze:
+        - background
+        - walls
+        - start-point
+        - end-point
+        - kitty
+        - kitty trail (paw prints)
+
+
+- ADDITIONAL IDEAS TO CONSIDER:
+    - increasing difficulty of mazes
+    - multiple items to pickup in the maze
+    - unlock items per X number of maze completions
+    
