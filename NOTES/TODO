@@ -16,7 +16,7 @@
         X wall
     X maze generation service
     X rendering of maze model
-    - kitty item database
+    - kitty item datastore
     - kitty item unlock mechanic
     - kitty item use system
     - maze stats data collection

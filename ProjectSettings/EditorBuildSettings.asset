@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/KittyPresentationScene.unity
+    guid: a093d70565e22a649b38363b7e4f778b
+  - enabled: 1
     path: Assets/Scenes/MazeScene.unity
     guid: 171daa80e503a474f8e5ad6c93394124
+  - enabled: 1
+    path: Assets/Scenes/KittyDressUpScene.unity
+    guid: e23f1fad6e30c94408d7c5e20894b3cb
   m_configObjects: {}
