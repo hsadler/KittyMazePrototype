@@ -32,3 +32,6 @@ sysinfo.txt
 # VS Code
 .vscode
 .vs
+
+# Third Party Assets
+*/Thirdparty/*
