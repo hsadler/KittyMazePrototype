@@ -24,9 +24,9 @@
 
 
 - UX:
-    - KittyPresentation Scene (opening scene)
-    - KittyDressUp Scene
-    - KittyMaze Scene
+    - MainMenu Scene
+    - DressUp Scene
+    - Maze Scene
 
 
 - DESIGN:
