@@ -32,9 +32,6 @@ public class TouchMoveScript : MonoBehaviour {
 			touchPosition.z = 0;
 			direction = touchPosition - transform.position;
 			rb.velocity = new Vector2(direction.x, direction.y) * moveSpeed;
-			// if (touch.phase == TouchPhase.Ended) {
-			// 	rb.velocity = Vector2.zero;
-			// }
 		} else {
 			rb.velocity = Vector2.zero;
 		}

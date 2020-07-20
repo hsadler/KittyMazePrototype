@@ -50,3 +50,9 @@ TagManager:
   - name: MazeGameObjects
     uniqueID: 259527807
     locked: 0
+  - name: Kitty
+    uniqueID: 2392971759
+    locked: 0
+  - name: KittyAccessories
+    uniqueID: 1478116383
+    locked: 0
