@@ -1,8 +1,12 @@
 
 
 - TODO NEXT:
-    X POC object traversal through maze from start to finish
-    X POC procedural maze creation algo
+    - import varied kitty accessories before starting system building
+    - kitty accessories datastore
+    - kitty accessories unlock system
+    - kitty equiped-accessories datastore
+    - kitty accessories click-equip in dressup-scene
+    - KittySelect Scene 1st pass
 
 
 - SYSTEMS:
@@ -16,17 +20,20 @@
         X wall
     X maze generation service
     X rendering of maze model
-    - kitty item datastore
-    - kitty item unlock mechanic
-    - kitty item use system
+    - kitty accessories datastore
+    - kitty accessories unlock system
+    - kitty equiped-accessories datastore
     - maze stats data collection
-    - maze completion award
+    - maze completion unlock new accessory or new kitty
 
 
 - UX:
-    - MainMenu Scene
-    - DressUp Scene
-    - Maze Scene
+    X MainMenu Scene 1st pass
+    X DressUp Scene 1st pass
+    X Maze Scene 1st pass
+    - kitty accessories click-equip in dressup-scene
+    - KittySelect Scene 1st pass
+    - maze completion modal and experience
 
 
 - DESIGN:
