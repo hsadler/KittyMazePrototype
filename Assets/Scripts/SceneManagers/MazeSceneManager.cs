@@ -48,7 +48,7 @@ public class MazeSceneManager : MonoBehaviour {
 	private void RenderMazeObjects() {
 		GameObject mazeContainer = Instantiate(mazeContainerPrefab);
 		Vector3 mazePosition = new Vector3(
-			-(mazeModel.width / 2),
+			-(mazeModel.width / 2) + 1,
 			-(mazeModel.height / 2),
 			0
 		);
