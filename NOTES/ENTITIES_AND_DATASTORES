@@ -1,0 +1,20 @@
+﻿
+
+ENTITIES AND DATASTORES
+
+
+// entities
+    - kitty
+    - unlocked_kitties
+    - kitty_accessory
+    - kitty_unlocked_accessories
+    - maze_progress
+
+// datastores
+    - unlocked_kitties
+    - kitty_unlocked_accessories
+    - maze_progress
+
+Notes:
+    - kitty and kitty_accessory will be stored as Unity objects
+

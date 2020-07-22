@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EndPointScript : MonoBehaviour {
 
+
     // UNITY HOOKS
 
     void Start() {}
@@ -15,5 +16,6 @@ public class EndPointScript : MonoBehaviour {
             MazeSceneManager.instance.MazeComplete();
         }
     }
+
 
 }

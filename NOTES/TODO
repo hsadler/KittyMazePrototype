@@ -1,7 +1,8 @@
 
 
 - TODO NEXT:
-    - import varied kitty accessories before starting system building
+    X import varied kitty accessories before starting system building
+    - tech spec data models, saving, etc.
     - kitty accessories datastore
     - kitty accessories unlock system
     - kitty equiped-accessories datastore

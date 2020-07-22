@@ -9,10 +9,23 @@ A game for young children where they have a kitty, can dress him/her up,
 and complete mazes in order to unlock additional kitty items.
 
 
-UX:
+General UX:
     1. open app
-    2. land on kitty-presentation page
-    3. can either go to kitty-dress-up page or kitty-maze page
-    4. if kitty-dress-up, can search through unlocked items to dress kitty
-    5. if kitty-maze, can complete mazes to unlock items for kitty
+    2. land on main-menu page
+    3. can go to: kitty-selection, dress-up, or maze scene
+    4. if kitty-selection: can select current-kitty
+    5. if dress-up: can select from unlocked accessories to dress kitty
+    6. if maze: can complete mazes to unlock accessories for current kitty
+
+Maze Completion UX:
+    1. hit maze scene
+    2. player directs kitty around maze until goal is reached
+    3. at goal, modal pops up showing progress towards unlock
+        of new kitty accessory
+    4. if progress reaches accessory unlock, show unlock
+        animation and new item
+    5. player clicks button to exit modal and start new maze
+
+
+
     
