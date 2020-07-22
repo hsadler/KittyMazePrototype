@@ -2,13 +2,12 @@
 
 - TODO NEXT:
     X import varied kitty accessories before starting system building
-    - tech spec data models, saving, etc.
-    - kitty accessories datastore
-    - kitty accessories unlock system
-    - kitty equiped-accessories datastore
-    - kitty accessories click-equip in dressup-scene
     - KittySelect Scene 1st pass
-
+    - tech spec data models and persistent data management
+    - draft data schemas
+    - implement syncing of Kitty and Accessory resources with datastores
+    - accessory click-equip in dressup-scene
+    
 
 - SYSTEMS:
     X MazeSceneManager
@@ -21,11 +20,11 @@
         X wall
     X maze generation service
     X rendering of maze model
-    - kitty accessories datastore
-    - kitty accessories unlock system
-    - kitty equiped-accessories datastore
+    - selected kitty
+    - selected accessories per kitty
+    - maze progression
+    - unlock new accessory or new kitty
     - maze stats data collection
-    - maze completion unlock new accessory or new kitty
 
 
 - UX:

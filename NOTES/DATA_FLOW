@@ -1,0 +1,13 @@
+﻿
+
+DATA FLOW
+
+
+Q:  How do you add new assets to the game (kitties and accessories) while
+    also keeping datastores of what the player has unlocked and currently
+    selected?
+
+A:  Kitty and Accessory assets should be able to be imported into Unity and just
+    work. This can be achieved by having a check, on game start-up, the
+    GameObjects in the Resources directory and add them, with default
+    start-state, to the datastores.

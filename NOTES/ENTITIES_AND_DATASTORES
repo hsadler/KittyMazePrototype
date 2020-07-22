@@ -3,18 +3,24 @@
 ENTITIES AND DATASTORES
 
 
-// entities
+// entities (stored as Unity resources)
     - kitty
-    - unlocked_kitties
-    - kitty_accessory
-    - kitty_unlocked_accessories
-    - maze_progress
+    - accessory
+
 
 // datastores
-    - unlocked_kitties
-    - kitty_unlocked_accessories
+    - kitty
+    - accessory
+    - kitty_accessory (relationship lookup store)
     - maze_progress
+    - player_stats
 
-Notes:
-    - kitty and kitty_accessory will be stored as Unity objects
 
+// fetch methods
+    - GetSelectedKitty()
+    - GetSelectedAccessoriesForKitty(kitty)
+    - GetAllKitties()
+    - SetSelectedKitty(kitty)
+    - SetSelectedAccessoryForKitty(kitty, accessory)
+    - GetMazeProgression()
+    - SetMazeProgression(progressionValue)
