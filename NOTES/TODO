@@ -2,11 +2,13 @@
 
 - TODO NEXT:
     X import varied kitty accessories before starting system building
-    - KittySelect Scene 1st pass
+    - build KittySelect Scene
+    - mock kitty into maze scene
+    - mock maze-progression modal
+    - mock accessory unlock
     - tech spec data models and persistent data management
     - draft data schemas
     - implement syncing of Kitty and Accessory resources with datastores
-    - accessory click-equip in dressup-scene
     
 
 - SYSTEMS:

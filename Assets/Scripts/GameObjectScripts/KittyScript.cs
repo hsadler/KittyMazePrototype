@@ -15,8 +15,8 @@ public class KittyScript : MonoBehaviour {
 
     void Start() {
         // example of loading resources by name
-        GameObject bowBlue = Resources.Load<GameObject>("BowBlue");
-        Instantiate(bowBlue, this.gameObject.transform);
+        //GameObject bowBlue = Resources.Load<GameObject>("BowBlue");
+        //Instantiate(bowBlue, this.gameObject.transform);
     }
 
     void Update() {}
