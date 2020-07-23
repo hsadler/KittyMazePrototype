@@ -14,6 +14,10 @@ public class SceneNavScript : MonoBehaviour {
         SceneManager.LoadScene("MazeScene");
     }
 
+    public void NavToKittySelectScene() {
+        SceneManager.LoadScene("KittySelectScene");
+    }
+
     public void NavToDressUpScene() {
         SceneManager.LoadScene("DressUpScene");
     }

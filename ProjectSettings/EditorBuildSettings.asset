@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DressUpScene.unity
     guid: e23f1fad6e30c94408d7c5e20894b3cb
+  - enabled: 1
+    path: Assets/Scenes/KittySelectScene.unity
+    guid: d766e49ea06534228a781579294dd0d7
   m_configObjects: {}
