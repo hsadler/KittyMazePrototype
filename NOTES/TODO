@@ -2,7 +2,10 @@
 
 - TODO NEXT:
     X import varied kitty accessories before starting system building
-    - build KittySelect Scene
+    X build KittySelect Scene (incorporated in dress-up scene instead)
+    X mock kitty-select scroll list
+    X mock accessory-select scroll list
+    - change kitty and accessory overlays to be entirely sprite based (for UI and gameObject use)
     - mock kitty into maze scene
     - mock maze-progression modal
     - mock accessory unlock
