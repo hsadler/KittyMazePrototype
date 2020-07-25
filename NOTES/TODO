@@ -5,7 +5,7 @@
     X build KittySelect Scene (incorporated in dress-up scene instead)
     X mock kitty-select scroll list
     X mock accessory-select scroll list
-    - change kitty and accessory overlays to be entirely sprite based (for UI and gameObject use)
+    - solve problem of reconciling kitty desplay for both UI and gameObject
     - mock kitty into maze scene
     - mock maze-progression modal
     - mock accessory unlock
@@ -67,4 +67,5 @@
     - increasing difficulty of mazes
     - multiple items to pickup in the maze
     - unlock items per X number of maze completions
+    - mazes portal to different mazes for item collection and final goal
     

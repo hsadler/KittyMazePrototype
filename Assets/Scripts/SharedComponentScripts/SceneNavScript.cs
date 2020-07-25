@@ -6,21 +6,17 @@ using UnityEngine.SceneManagement;
 public class SceneNavScript : MonoBehaviour {
 
 
-    public void NavToMainMenuScene() {
-        SceneManager.LoadScene("MainMenuScene");
-    }
+	public void NavToMainMenuScene() {
+		SceneManager.LoadScene("MainMenuScene");
+	}
 
-    public void NavToMazeScene() {
-        SceneManager.LoadScene("MazeScene");
-    }
+	public void NavToMazeScene() {
+		SceneManager.LoadScene("MazeScene");
+	}
 
-    public void NavToKittySelectScene() {
-        SceneManager.LoadScene("KittySelectScene");
-    }
-
-    public void NavToDressUpScene() {
-        SceneManager.LoadScene("DressUpScene");
-    }
+	public void NavToDressUpScene() {
+		SceneManager.LoadScene("DressUpScene");
+	}
 
 
 }
