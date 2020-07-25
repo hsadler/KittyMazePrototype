@@ -5,8 +5,8 @@
     X build KittySelect Scene (incorporated in dress-up scene instead)
     X mock kitty-select scroll list
     X mock accessory-select scroll list
-    - solve problem of reconciling kitty desplay for both UI and gameObject
-    - mock kitty into maze scene
+    X solve problem of reconciling kitty desplay for both UI and gameObject
+    - mock separate kitty assets for maze-kitty (round kitty face, no accessories)
     - mock maze-progression modal
     - mock accessory unlock
     - tech spec data models and persistent data management
