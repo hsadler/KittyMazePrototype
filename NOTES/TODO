@@ -6,7 +6,7 @@
     X mock kitty-select scroll list
     X mock accessory-select scroll list
     X solve problem of reconciling kitty desplay for both UI and gameObject
-    - mock separate kitty assets for maze-kitty (round kitty face, no accessories)
+    X mock separate kitty assets for maze-kitty (round kitty face, no accessories)
     - tech spec data models and persistent data management
     - draft data schemas
     - implement syncing of Kitty and Accessory resources with datastores
