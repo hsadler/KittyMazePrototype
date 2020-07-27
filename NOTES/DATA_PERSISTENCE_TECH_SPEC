@@ -3,4 +3,61 @@
 DATA PERSISTENCE TECH SPEC
 
 
-// todo
+Asset Pipeline and Game Consumption:
+	1. Kitty and Accessory assets added to game /Resources directory
+	2. Game does a start-up check for new assets and updates persistent JSON datastore
+	3. JSON datastore serves as source-of-truth thereafter
+	4. Client lookups for Kitties, Accessories, selections, and unlock statuses are 
+		done through the JSON datastore
+
+
+Classes and Definitions
+
+	// Data access layer. Keep full data in memory and sych to JSON files.
+	- KittyMazeData
+		// INTERFACE
+		- Create(string dataType, mixed dataModel)
+		- Read(string dataType, string lookupKey, mixed lookupValue)
+		- Update(string dataType, mixed dataModel)
+		// IMPLEMENTATION
+		- Scan(string dataType)
+		- SynchToJson(string dataType)
+
+	// Structs representing records.
+	- KittyModel
+		- id
+		- assetName
+		- isUnlocked 
+		- isSelected
+
+	- AccessoryModel
+		- id
+		- assetName
+		- isUnlocked
+
+	- KittyAccessory
+		- kittyId
+		- accessoryId
+		- isSelected
+
+	- MazeProgressModel
+		- TODO
+
+	// Services for each entity type. 
+	// (maybe rethink whether they all need to be one-for-one of the struct classes)
+	- KittyService
+		- GetAllKitties() : List<KittyModel>
+		- GetSelectedKitty() : KittyModel
+		- SetSelectedKitty(KittyModel kitty) : bool
+
+	- AccessoryService
+		- GetAllAccessories() : List<AccessoryModel> 
+
+	- KittyAccessoryService
+		- GetSelectedAccessoriesForKitty(KittyModel kitty) : List<AccessoryModel>
+		- SetSelectedAccessoryForKitty(KittyModel kitty, AccessoryModel accessory) : bool
+
+	- MazeProgressService
+		- GetMazeProgress() : MazeProgressModel
+		- SetMazeProgress(MazeProgressModel mazeProgress) : bool
+
