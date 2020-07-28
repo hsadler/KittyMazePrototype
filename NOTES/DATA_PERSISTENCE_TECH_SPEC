@@ -25,23 +25,23 @@ Classes and Definitions
 
 	// Structs representing records.
 	- KittyModel
-		- id
-		- assetName
-		- isUnlocked 
-		- isSelected
+		- string id
+		- string assetName
+		- bool isUnlocked
+		- bool isSelected
 
 	- AccessoryModel
-		- id
-		- assetName
-		- isUnlocked
+		- string id
+		- string assetName
+		- bool isUnlocked
 
 	- KittyAccessory
-		- kittyId
-		- accessoryId
-		- isSelected
+		- string kittyId
+		- string accessoryId
+		- bool isSelected
 
 	- MazeProgressModel
-		- TODO
+		- int currentProgress
 
 	// Services for each entity type. 
 	// (maybe rethink whether they all need to be one-for-one of the struct classes)
