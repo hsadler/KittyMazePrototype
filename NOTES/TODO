@@ -8,7 +8,7 @@
     X solve problem of reconciling kitty desplay for both UI and gameObject
     X mock separate kitty assets for maze-kitty (round kitty face, no accessories)
     X tech spec data models and persistent data management
-    - draft data schemas
+    X draft data schemas
     - implement syncing of Kitty and Accessory resources with datastores
     - implement kitty selection
     - implement accessory selection

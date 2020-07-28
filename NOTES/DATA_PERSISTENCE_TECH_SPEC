@@ -14,50 +14,66 @@ Asset Pipeline and Game Consumption:
 Classes and Definitions
 
 	// Data access layer. Keep full data in memory and sych to JSON files.
-	- KittyMazeData
+	KittyData
 		// INTERFACE
-		- Create(string dataType, mixed dataModel)
-		- Read(string dataType, string lookupKey, mixed lookupValue)
-		- Update(string dataType, mixed dataModel)
+		GetModels() : List<KittyModel>
+		SaveModel(KittyModel model) : bool
 		// IMPLEMENTATION
-		- Scan(string dataType)
-		- SynchToJson(string dataType)
+		LoadRecords()
+		SynchRecordsToJsonFile()
+
+	AccessoryData
+		// INTERFACE
+		GetModels() : List<AccessoryModel>
+		SaveModel(AccessoryModel model) : bool
+		// IMPLEMENTATION
+		LoadRecords()
+		SynchRecordsToJsonFile()
+
+	KittyAccessoryData
+		// INTERFACE
+		GetModels() : List<KittyAccessoryModel>
+		SaveModel(KittyAccessoryModel model) : bool
+		// IMPLEMENTATION
+		LoadRecords()
+		SynchRecordsToJsonFile()
+	
 
 	// Structs representing records.
-	- KittyModel
-		- string id
-		- string assetName
-		- bool isUnlocked
-		- bool isSelected
+	KittyModel
+		string id
+		string assetName
+		bool isUnlocked
+		bool isSelected
 
-	- AccessoryModel
-		- string id
-		- string assetName
-		- bool isUnlocked
+	AccessoryModel
+		string id
+		string assetName
+		bool isUnlocked
 
-	- KittyAccessory
-		- string kittyId
-		- string accessoryId
-		- bool isSelected
+	KittyAccessory
+		string kittyId
+		string accessoryId
+		bool isSelected
 
-	- MazeProgressModel
-		- int currentProgress
+	MazeProgressModel
+		int currentProgress
 
 	// Services for each entity type. 
 	// (maybe rethink whether they all need to be one-for-one of the struct classes)
-	- KittyService
-		- GetAllKitties() : List<KittyModel>
-		- GetSelectedKitty() : KittyModel
-		- SetSelectedKitty(KittyModel kitty) : bool
+	KittyService
+		GetAllKitties() : List<KittyModel>
+		GetSelectedKitty() : KittyModel
+		SetSelectedKitty(KittyModel kitty) : bool
 
-	- AccessoryService
-		- GetAllAccessories() : List<AccessoryModel> 
+	AccessoryService
+		GetAllAccessories() : List<AccessoryModel> 
 
-	- KittyAccessoryService
-		- GetSelectedAccessoriesForKitty(KittyModel kitty) : List<AccessoryModel>
-		- SetSelectedAccessoryForKitty(KittyModel kitty, AccessoryModel accessory) : bool
+	KittyAccessoryService
+		GetSelectedAccessoriesForKitty(KittyModel kitty) : List<AccessoryModel>
+		SetSelectedAccessoryForKitty(KittyModel kitty, AccessoryModel accessory) : bool
 
-	- MazeProgressService
-		- GetMazeProgress() : MazeProgressModel
-		- SetMazeProgress(MazeProgressModel mazeProgress) : bool
+	MazeProgressService
+		GetMazeProgress() : MazeProgressModel
+		SetMazeProgress(MazeProgressModel mazeProgress) : bool
 

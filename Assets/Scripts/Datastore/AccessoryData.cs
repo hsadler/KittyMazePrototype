@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KittyMazeData {
+public class AccessoryData {
 
-	// MODEL FOR KITTY
+	// DATA ACCESSOR FOR ACCESSORY RECORDS
 
 
 	// TODO: implement
-	// MAY NOT USE THIS CLASS
 
-	public KittyMazeData() {}
+	public AccessoryData() {}
 	
 
 }
