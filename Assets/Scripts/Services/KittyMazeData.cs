@@ -8,7 +8,7 @@ public class KittyMazeData {
 
 
 	// TODO: implement
-	
+
 	public KittyMazeData() {}
 	
 
