@@ -29,9 +29,10 @@ sysinfo.txt
 *.apk
 *.unitypackage
 
-# VS Code
+# Editors
 .vscode
 .vs
+.idea/
 
 # Third Party Assets
 */Thirdparty/*
