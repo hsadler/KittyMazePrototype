@@ -7,9 +7,13 @@ public class GameManager : MonoBehaviour {
 	// GLOBAL GAME MANAGER
 
 
+	public Assets assets;
+	public KittyData kittyData;
+	public AccessoryData accessoryData;
+	public KittyAccessoryData kittyAccessoryData;
 	public DataStartup dataStartup;
 
-	
+
 	// the static reference to the singleton instance
 	public static GameManager instance { get; private set; }
 
@@ -18,13 +22,11 @@ public class GameManager : MonoBehaviour {
 	void Awake() {
 		if(instance == null) {
 			instance = this;
+			this.Init();
 			DontDestroyOnLoad(gameObject);
 		} else {
 			Destroy(gameObject);
 		}
-		// execute data startup processes
-		this.dataStartup = new DataStartup();
-		this.dataStartup.ExecuteStartupProcesses();
 	}
 
 	void Start() {}
@@ -33,5 +35,16 @@ public class GameManager : MonoBehaviour {
 
 	// IMPLEMENTATION METHODS
 
-	
+	private void Init() {
+		// instantiate components and datastores
+		this.assets = new Assets();
+		this.kittyData = new KittyData();
+		this.accessoryData = new AccessoryData();
+		this.kittyAccessoryData = new KittyAccessoryData();
+		// execute data startup processes
+		this.dataStartup = new DataStartup();
+		this.dataStartup.ExecuteStartupProcesses();
+	}
+
+
 }

@@ -8,8 +8,17 @@ public class Kitty {
 
 
 	// TODO: implement
-	
-	public Kitty() {}
-	
+
+	public static KittyModel GetKittyByAssetName(string assetName) {
+		var assetNameToKittyModel = GameManager
+			.instance
+			.kittyData
+			.GetAssetNameToKittyModel();
+		if(assetNameToKittyModel.ContainsKey(assetName)) {
+			return assetNameToKittyModel[assetName];
+		}
+		return null;
+	}
+
 
 }
