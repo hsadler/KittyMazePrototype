@@ -1,23 +1,17 @@
 
 
 - TODO NEXT:
-	X import varied kitty accessories before starting system building
-	X build KittySelect Scene (incorporated in dress-up scene instead)
-	X mock kitty-select scroll list
-	X mock accessory-select scroll list
-	X solve problem of reconciling kitty desplay for both UI and gameObject
-	X mock separate kitty assets for maze-kitty (round kitty face, no accessories)
 	X tech spec data models and persistent data management
 	X draft data schemas
 	- implement syncing of Kitty and Accessory resources with datastores
 	- implement kitty selection
 	- implement accessory selection
-	
-	
+
+
 - TODO PHASE 2:
 	- mock maze-progression modal
 	- mock accessory unlock
-	
+
 
 - SYSTEMS:
 	X MazeSceneManager
@@ -73,4 +67,4 @@
 	- multiple items to pickup in the maze
 	- unlock items per X number of maze completions
 	- mazes portal to different mazes for item collection and final goal
-	
+
