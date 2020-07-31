@@ -13,26 +13,29 @@ public class DataStartup {
 	// INTERFACE METHODS
 
 	public void ExecuteStartupProcesses() {
-		// STUB
+		var gm = GameManager.instance;
 		// search Resources directory for assets
 		List<Sprite> kittySprites =
 			Resources.LoadAll("Kitty", typeof(Sprite))
 			.Cast<Sprite>()
 			.ToList();
+		var kittiesToSave = new List<KittyModel>();
 		foreach (var kittySprite in kittySprites) {
 			// register assets
-			GameManager.instance.assets.SetSprite(
+			gm.assets.SetSprite(
 				kittySprite.name,
 				kittySprite
 			);
-			// if any assets do not yet exist as records in the
-			// datastore, insert them with a default state
 			var kittyModel = Kitty.GetKittyByAssetName(kittySprite.name);
 			if(kittyModel == null) {
 				Debug.Log("no kitty model found");
 				kittyModel = new KittyModel("none", kittySprite.name, false, false);
+				kittiesToSave.Add(kittyModel);
 			}
 		}
+		// if any assets do not yet exist as records in the
+		// datastore, insert them with a default state
+		Kitty.SaveKitties(kittiesToSave);
 	}
 
 	// IMPLEMENTATION METHODS

@@ -20,7 +20,26 @@ public class Kitty {
 		return null;
 	}
 
-	public void SaveKitties(List<KittyModel> kittyModels) {
+	public static void SaveKitties(List<KittyModel> kittyModels) {
+		Debug.Log("Saving kitties");
+		GameManager.instance.kittyData.SaveModels(kittyModels);
+	}
+
+	public static void SaveKitty(KittyModel kitty) {
+		var kittiesToSave = new List<KittyModel>() { kitty };
+		Kitty.SaveKitties(kittiesToSave);
+	}
+
+	public static List<KittyModel> GetAllKitties() {
+		return GameManager.instance.kittyData.GetModels();
+	}
+
+	public static KittyModel GetSelectedKitty() {
+		// STUB
+		return null;
+	}
+
+	public static void SetSelectedKitty(KittyModel kitty) {
 		// STUB
 	}
 
