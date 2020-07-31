@@ -30,6 +30,7 @@ public class DataStartup {
 			var kittyModel = Kitty.GetKittyByAssetName(kittySprite.name);
 			if(kittyModel == null) {
 				Debug.Log("no kitty model found");
+				kittyModel = new KittyModel("none", kittySprite.name, false, false);
 			}
 		}
 	}

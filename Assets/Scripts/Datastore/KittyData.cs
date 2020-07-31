@@ -34,9 +34,8 @@ public class KittyData {
 		return this.assetNameToKittyModel;
 	}
 
-	public bool SaveModel(KittyModel model) {
+	public void SaveModel(KittyModel model) {
 		// STUB
-		return true;
 	}
 
 	// IMPLEMENTATION METHODS
@@ -65,7 +64,8 @@ public class KittyData {
 	}
 
 	private void SynchRecordsToJsonFile() {
-		// string json = JsonUtility.ToJson(this.kittyModels);
+		string json = JsonUtility.ToJson(this.assetNameToKittyModel.Values.ToList());
+		Debug.Log("SynchRecordsToJsonFile json: " + json);
 	}
 
 	private string GetFormattedSavePath() {

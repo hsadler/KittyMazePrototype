@@ -20,5 +20,9 @@ public class Kitty {
 		return null;
 	}
 
+	public void SaveKitties(List<KittyModel> kittyModels) {
+		// STUB
+	}
+
 
 }
