@@ -21,7 +21,6 @@ public class Kitty {
 	}
 
 	public static void SaveKitties(List<KittyModel> kittyModels) {
-		Debug.Log("Saving kitties");
 		GameManager.instance.kittyData.SaveModels(kittyModels);
 	}
 

@@ -56,10 +56,10 @@ public class KittyData {
 		string savePath = GetFormattedSaveFilePath();
 		if(File.Exists(savePath)) {
 			string json = File.ReadAllText(savePath);
-			Debug.Log("Loaded json: " + json);
-			var kittyModels = JsonUtility.FromJson<List<KittyModel>>(json);
-			foreach (var kittyModel in kittyModels) {
-				Debug.Log("kitty model asset name: " + kittyModel.assetName);
+			// Debug.Log("Loaded json: " + json);
+			KittySave kittySave = JsonUtility.FromJson<KittySave>(json);
+			foreach (var kittyModel in kittySave.kittyModels) {
+				// Debug.Log("kitty model asset name: " + kittyModel.assetName);
 				this.assetNameToKittyModel.Add(
 					kittyModel.assetName,
 					kittyModel
@@ -70,11 +70,12 @@ public class KittyData {
 
 	private void SynchRecordsToJsonFile() {
 		this.InitDirectories();
+		var kittySave = new KittySave(this.assetNameToKittyModel.Values.ToList());
 		string json = JsonUtility.ToJson(
-			this.assetNameToKittyModel.Values.ToList(), 
+			kittySave, 
 			true
 		);
-		Debug.Log("SynchRecordsToJsonFile json: " + json);
+		// Debug.Log("SynchRecordsToJsonFile json: " + json);
 		File.WriteAllText(this.GetFormattedSaveFilePath(), json, Encoding.UTF8);
 	}
 
