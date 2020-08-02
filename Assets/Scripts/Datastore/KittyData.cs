@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class KittyData {
 
-	// DATA ACCESSOR AND STATE MANAGER FOR KITTY RECORDS
+	// DATA STATE MANAGER FOR KITTY RECORDS
 
 
 	private const string SAVE_DIR = "/";
