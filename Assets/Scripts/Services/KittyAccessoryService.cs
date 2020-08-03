@@ -2,14 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Accessory {
+public class KittyAccessoryService {
 
-	// SERVICE FOR ACCESSORIES
+	// SERVICE FOR KITTY -> ACCESSORY RELATIONSHIPS
 
 
 	// TODO: implement
-	
-	public Accessory() {}
 	
 
 }

@@ -10,13 +10,13 @@ public class KittySelectScrollListScript : MonoBehaviour {
 
 
 	void Start() {
-		List<KittyModel> kitties = Kitty.GetAllKitties();
+		List<KittyModel> kitties = KittyService.GetAllKitties();
 		foreach (var kittyModel in kitties) {
 			GameObject kittyScrollContentItem = Instantiate(
 				kittyScrollContentItemPrefab, 
 				scrollContent.transform
 			);
-			Sprite sprite = GameManager.instance.assets.GetSprite(kittyModel.assetName);
+			Sprite sprite = AssetService.GetSprite(kittyModel.thumbAssetAddress);
 			kittyScrollContentItem.GetComponent<KittyScrollContentItemScript>()
 				.kittyImage
 				.sprite = sprite;

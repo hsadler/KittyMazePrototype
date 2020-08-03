@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Kitty {
+public class KittyService {
 
 	// SERVICE FOR KITTIES
+
+	private static string kittyAssetNamespace = "Kitty";
+	private static string kittyThumbAssetNamespace = "KittyThumb";
 
 
 	// TODO: implement
@@ -26,7 +29,7 @@ public class Kitty {
 
 	public static void SaveKitty(KittyModel kitty) {
 		var kittiesToSave = new List<KittyModel>() { kitty };
-		Kitty.SaveKitties(kittiesToSave);
+		KittyService.SaveKitties(kittiesToSave);
 	}
 
 	public static List<KittyModel> GetAllKitties() {
@@ -40,6 +43,18 @@ public class Kitty {
 
 	public static void SetSelectedKitty(KittyModel kitty) {
 		// STUB
+	}
+
+	public static string GetFormattedKittyAssetAddress(string spriteName) {
+		return KittyService.kittyAssetNamespace + "/" + spriteName;
+	}
+
+	public static string GetFormattedKittyThumbAssetAddress(string spriteName, bool isThumbSpriteName=false) {
+		string address = KittyService.kittyThumbAssetNamespace + "/" + spriteName;
+		if(!isThumbSpriteName) {
+			address = address + "Thumb";
+		}
+		return address; 
 	}
 
 

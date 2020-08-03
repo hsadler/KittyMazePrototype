@@ -3,7 +3,7 @@
 - TODO NEXT:
 	X tech spec data models and persistent data management
 	X draft data schemas
-	- find a solution to the "multiple sprite assets per kitty" problem (full and thumbnail):
+	X find a solution to the "multiple sprite assets per kitty" problem (full and thumbnail):
 		- consider "addresses" for assets per type (ex. "Kitty/KittyGrey", "KittyThumb/KittyGrey")
 		- modify KittyModel to include "assetAddress" and "thumbAssetAddress" properties
 		- consider adding an AssetService with methods for getting assets by address

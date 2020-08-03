@@ -9,19 +9,25 @@ public class KittyModel {
 
 
 	public string id;
-	public string assetName;
-	public bool isUnlocked; 
+	public string primaryAssetName;
+	public string primaryAssetAddress;
+	public string thumbAssetAddress;
+	public bool isUnlocked;
 	public bool isSelected;
 
 
 	public KittyModel(
 		string id,
-		string assetName,
+		string primaryAssetName,
+		string primaryAssetAddress,
+		string thumbAssetAddress,
 		bool isUnlocked,
 		bool isSelected
 	) {
 		this.id = id;
-		this.assetName = assetName;
+		this.primaryAssetName = primaryAssetName;
+		this.primaryAssetAddress = primaryAssetAddress;
+		this.thumbAssetAddress = thumbAssetAddress;
 		this.isUnlocked = isUnlocked;
 		this.isSelected = isSelected;
 	}

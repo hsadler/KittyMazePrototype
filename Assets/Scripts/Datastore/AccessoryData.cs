@@ -7,7 +7,7 @@ public class AccessoryData {
 	// DATA ACCESSOR FOR ACCESSORY RECORDS
 
 
-	// TODO: implement
+	// TODO: implement as per example KittyData
 
 	public AccessoryData() {}
 	

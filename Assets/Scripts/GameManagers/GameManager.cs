@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour {
 	// GLOBAL GAME MANAGER
 
 
-	public Assets assets;
+	public AssetData assetData;
 	public KittyData kittyData;
 	public AccessoryData accessoryData;
 	public KittyAccessoryData kittyAccessoryData;
@@ -36,8 +36,8 @@ public class GameManager : MonoBehaviour {
 	// IMPLEMENTATION METHODS
 
 	private void Init() {
-		// instantiate components and datastores
-		this.assets = new Assets();
+		// instantiate datastores
+		this.assetData = new AssetData();
 		this.kittyData = new KittyData();
 		this.accessoryData = new AccessoryData();
 		this.kittyAccessoryData = new KittyAccessoryData();

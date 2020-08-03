@@ -28,7 +28,7 @@ public class MazeSceneManager : MonoBehaviour {
 		} else {
 			Destroy(gameObject);
 		}
-		var mazeGen = new MazeGenerator();
+		var mazeGen = new MazeGeneratorService();
 		this.mazeModel = mazeGen.GenerateMaze(11, 11);
 	}
 

@@ -7,34 +7,57 @@ public class DataStartup {
 
 	// RESPONSIBLE FOR DATA STARTUP PROCESSES
 
-
+	
 	public DataStartup() {}
 
 	// INTERFACE METHODS
 
 	public void ExecuteStartupProcesses() {
 		var gm = GameManager.instance;
-		// search Resources directory for assets
+
+		// search Resources directory for "Kitty" assets
 		List<Sprite> kittySprites =
 			Resources.LoadAll("Kitty", typeof(Sprite))
 			.Cast<Sprite>()
 			.ToList();
+		List<Sprite> kittyThumbSprites =
+			Resources.LoadAll("KittyThumb", typeof(Sprite))
+			.Cast<Sprite>()
+			.ToList();
 		var kittiesToSave = new List<KittyModel>();
 		foreach (var kittySprite in kittySprites) {
-			// register assets
-			gm.assets.SetSprite(
-				kittySprite.name,
-				kittySprite
-			);
-			var kittyModel = Kitty.GetKittyByAssetName(kittySprite.name);
+			// create kitty model if it doesn't yet exist
+			var kittyModel = KittyService.GetKittyByAssetName(kittySprite.name);
 			if(kittyModel == null) {
-				kittyModel = new KittyModel("none", kittySprite.name, false, false);
+				kittyModel = new KittyModel(
+					"none", 
+					kittySprite.name,
+					KittyService.GetFormattedKittyAssetAddress(kittySprite.name),
+					KittyService.GetFormattedKittyThumbAssetAddress(kittySprite.name),
+					false, 
+					false
+				);
 				kittiesToSave.Add(kittyModel);
 			}
+			// register assets
+			AssetService.SetSprite(
+				KittyService.GetFormattedKittyAssetAddress(kittySprite.name),
+				kittySprite
+			);
+		}
+		foreach(var kittyThumbSprite in kittyThumbSprites) {
+			// register assets
+			AssetService.SetSprite(
+				KittyService.GetFormattedKittyThumbAssetAddress(kittyThumbSprite.name, true),
+				kittyThumbSprite
+			);
 		}
 		// if any assets do not yet exist as records in the
 		// datastore, insert them with a default state
-		Kitty.SaveKitties(kittiesToSave);
+		KittyService.SaveKitties(kittiesToSave);
+
+		// TODO: accessories
+		
 	}
 
 	// IMPLEMENTATION METHODS
