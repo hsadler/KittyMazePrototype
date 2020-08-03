@@ -15,7 +15,7 @@ public class AccessoryService {
 		var assetNameToAccessoryModel = GameManager
 			.instance
 			.accessoryData
-			.GetAssetNameToAccessoryModel();
+			.GetAssetNameToModel();
 		if(assetNameToAccessoryModel.ContainsKey(assetName)) {
 			return assetNameToAccessoryModel[assetName];
 		}

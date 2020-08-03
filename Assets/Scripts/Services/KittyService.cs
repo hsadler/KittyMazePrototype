@@ -15,7 +15,7 @@ public class KittyService {
 		var assetNameToKittyModel = GameManager
 			.instance
 			.kittyData
-			.GetAssetNameToKittyModel();
+			.GetAssetNameToModel();
 		if(assetNameToKittyModel.ContainsKey(assetName)) {
 			return assetNameToKittyModel[assetName];
 		}

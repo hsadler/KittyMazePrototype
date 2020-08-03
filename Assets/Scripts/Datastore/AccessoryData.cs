@@ -1,5 +1,8 @@
+using System.IO;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AccessoryData {
@@ -16,7 +19,7 @@ public class AccessoryData {
 
 	// CONSTRUCTOR
 
-	public AccessoriesData() {
+	public AccessoryData() {
 		this.assetNameToModel = new Dictionary<string, AccessoryModel>();
 		this.InitDirectories();
 		this.LoadRecords();
@@ -57,7 +60,7 @@ public class AccessoryData {
 		if(File.Exists(savePath)) {
 			string json = File.ReadAllText(savePath);
 			// Debug.Log("Loaded json: " + json);
-			AccessorySave accessorySave = JsonUtility.FromJson<KittySave>(json);
+			AccessorySave accessorySave = JsonUtility.FromJson<AccessorySave>(json);
 			foreach (var accessoryModel in accessorySave.models) {
 				// Debug.Log("accessory model asset name: " + accessoryModel.assetName);
 				this.assetNameToModel.Add(

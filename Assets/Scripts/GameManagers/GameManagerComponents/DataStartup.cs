@@ -27,13 +27,13 @@ public class DataStartup {
 		var kittiesToSave = new List<KittyModel>();
 		foreach (var kittySprite in kittySprites) {
 			// create kitty model if it doesn't yet exist
-			var kittyModel = KittyService.GetKittyByAssetName(kittySprite.name);
+			var kittyModel = KittyService.GetModelByAssetName(kittySprite.name);
 			if(kittyModel == null) {
 				kittyModel = new KittyModel(
 					"none",
 					kittySprite.name,
-					KittyService.GetFormattedKittyAssetAddress(kittySprite.name),
-					KittyService.GetFormattedKittyThumbAssetAddress(kittySprite.name),
+					KittyService.GetFormattedAssetAddress(kittySprite.name),
+					KittyService.GetFormattedThumbAssetAddress(kittySprite.name),
 					false,
 					false
 				);
@@ -41,13 +41,13 @@ public class DataStartup {
 			}
 			// register assets
 			AssetService.SetSprite(
-				KittyService.GetFormattedKittyAssetAddress(kittySprite.name),
+				KittyService.GetFormattedAssetAddress(kittySprite.name),
 				kittySprite
 			);
 		}
 		foreach(var kittyThumbSprite in kittyThumbSprites) {
 			// register assets
-			string thumbAddress = KittyService.GetFormattedKittyThumbAssetAddress(
+			string thumbAddress = KittyService.GetFormattedThumbAssetAddress(
 				kittyThumbSprite.name,
 				true
 			);
@@ -58,7 +58,7 @@ public class DataStartup {
 		}
 		// if any assets do not yet exist as records in the
 		// datastore, insert them with a default state
-		KittyService.SaveKitties(kittiesToSave);
+		KittyService.SaveMultiple(kittiesToSave);
 
 		// TODO: accessories startup processes
 

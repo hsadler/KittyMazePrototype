@@ -10,7 +10,7 @@ public class KittySelectScrollListScript : MonoBehaviour {
 
 
 	void Start() {
-		List<KittyModel> kitties = KittyService.GetAllKitties();
+		List<KittyModel> kitties = KittyService.GetAll();
 		foreach (var kittyModel in kitties) {
 			GameObject kittyScrollContentItem = Instantiate(
 				kittyScrollContentItemPrefab, 
