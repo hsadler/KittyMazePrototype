@@ -6,13 +6,12 @@ public class KittyService {
 
 	// SERVICE FOR KITTIES
 
-	private static string kittyAssetNamespace = "Kitty";
-	private static string kittyThumbAssetNamespace = "KittyThumb";
+
+	private static string assetNamespace = "Kitty";
+	private static string thumbAssetNamespace = "KittyThumb";
 
 
-	// TODO: implement
-
-	public static KittyModel GetKittyByAssetName(string assetName) {
+	public static KittyModel GetModelByAssetName(string assetName) {
 		var assetNameToKittyModel = GameManager
 			.instance
 			.kittyData
@@ -23,38 +22,41 @@ public class KittyService {
 		return null;
 	}
 
-	public static void SaveKitties(List<KittyModel> kittyModels) {
-		GameManager.instance.kittyData.SaveModels(kittyModels);
+	public static void SaveMultiple(List<KittyModel> models) {
+		GameManager.instance.kittyData.SaveModels(models);
 	}
 
-	public static void SaveKitty(KittyModel kitty) {
-		var kittiesToSave = new List<KittyModel>() { kitty };
-		KittyService.SaveKitties(kittiesToSave);
+	public static void Save(KittyModel model) {
+		var modelsToSave = new List<KittyModel>() { model };
+		KittyService.SaveMultiple(modelsToSave);
 	}
 
-	public static List<KittyModel> GetAllKitties() {
+	public static List<KittyModel> GetAll() {
 		return GameManager.instance.kittyData.GetModels();
 	}
 
-	public static KittyModel GetSelectedKitty() {
+	public static KittyModel GetSelected() {
 		// STUB
 		return null;
 	}
 
-	public static void SetSelectedKitty(KittyModel kitty) {
+	public static void SetSelected(KittyModel model) {
 		// STUB
 	}
 
-	public static string GetFormattedKittyAssetAddress(string spriteName) {
-		return KittyService.kittyAssetNamespace + "/" + spriteName;
+	public static string GetFormattedAssetAddress(string spriteName) {
+		return KittyService.assetNamespace + "/" + spriteName;
 	}
 
-	public static string GetFormattedKittyThumbAssetAddress(string spriteName, bool isThumbSpriteName=false) {
-		string address = KittyService.kittyThumbAssetNamespace + "/" + spriteName;
+	public static string GetFormattedThumbAssetAddress(
+		string spriteName,
+		bool isThumbSpriteName=false
+	) {
+		string address = KittyService.thumbAssetNamespace + "/" + spriteName;
 		if(!isThumbSpriteName) {
 			address = address + "Thumb";
 		}
-		return address; 
+		return address;
 	}
 
 

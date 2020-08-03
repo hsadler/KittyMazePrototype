@@ -7,7 +7,7 @@ public class DataStartup {
 
 	// RESPONSIBLE FOR DATA STARTUP PROCESSES
 
-	
+
 	public DataStartup() {}
 
 	// INTERFACE METHODS
@@ -30,11 +30,11 @@ public class DataStartup {
 			var kittyModel = KittyService.GetKittyByAssetName(kittySprite.name);
 			if(kittyModel == null) {
 				kittyModel = new KittyModel(
-					"none", 
+					"none",
 					kittySprite.name,
 					KittyService.GetFormattedKittyAssetAddress(kittySprite.name),
 					KittyService.GetFormattedKittyThumbAssetAddress(kittySprite.name),
-					false, 
+					false,
 					false
 				);
 				kittiesToSave.Add(kittyModel);
@@ -47,8 +47,12 @@ public class DataStartup {
 		}
 		foreach(var kittyThumbSprite in kittyThumbSprites) {
 			// register assets
+			string thumbAddress = KittyService.GetFormattedKittyThumbAssetAddress(
+				kittyThumbSprite.name,
+				true
+			);
 			AssetService.SetSprite(
-				KittyService.GetFormattedKittyThumbAssetAddress(kittyThumbSprite.name, true),
+				thumbAddress,
 				kittyThumbSprite
 			);
 		}
@@ -56,8 +60,8 @@ public class DataStartup {
 		// datastore, insert them with a default state
 		KittyService.SaveKitties(kittiesToSave);
 
-		// TODO: accessories
-		
+		// TODO: accessories startup processes
+
 	}
 
 	// IMPLEMENTATION METHODS

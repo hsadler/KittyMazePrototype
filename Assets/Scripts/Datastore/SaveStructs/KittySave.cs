@@ -6,12 +6,12 @@ public struct KittySave {
 	// SAVE STRUCT FOR KITTY DATA
 
 
-	public List<KittyModel> kittyModels;  
+	public List<KittyModel> models;
 
 
-	public KittySave(List<KittyModel> kittyModels) {
-		this.kittyModels = kittyModels;
+	public KittySave(List<KittyModel> models) {
+		this.models = models;
 	}
-	
+
 
 }

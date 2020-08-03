@@ -6,12 +6,14 @@ public class AccessoryModel {
 
 	// MODEL FOR ACCESSORY
 
+	// TODO: add more properties as needed
+
 
 	public string id;
 	public string primaryAssetName;
 	public string primaryAssetAddress;
 	public string thumbAssetAddress;
-	public bool isUnlocked; 
+	public bool isUnlocked;
 
 
 	public AccessoryModel(
@@ -31,6 +33,6 @@ public class AccessoryModel {
 	// INTERFACE METHODS
 
 	// IMPLEMENTATION METHODS
-	
+
 
 }

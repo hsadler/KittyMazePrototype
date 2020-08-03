@@ -14,30 +14,32 @@ public class KittyData {
 	private const string SAVE_FILE = "kitty.json";
 
 	// use primary asset name as key for lookups
-	private IDictionary<string, KittyModel> assetNameToKittyModel;
+	private IDictionary<string, KittyModel> assetNameToModel;
 
+
+	// CONSTRUCTOR
 
 	public KittyData() {
-		this.assetNameToKittyModel = new Dictionary<string, KittyModel>();
+		this.assetNameToModel = new Dictionary<string, KittyModel>();
 		this.InitDirectories();
 		this.LoadRecords();
 	}
 
 	// INTERFACE METHODS
-	
-	public IDictionary<string, KittyModel> GetAssetNameToKittyModel() {
-		return this.assetNameToKittyModel;
+
+	public IDictionary<string, KittyModel> GetAssetNameToModel() {
+		return this.assetNameToModel;
 	}
 
 	public List<KittyModel> GetModels() {
-		return this.assetNameToKittyModel.Values.ToList();
+		return this.assetNameToModel.Values.ToList();
 	}
 
 	public void SaveModels(List<KittyModel> models) {
 		// add models if they don't yet exist
 		foreach (var kittyModel in models) {
-			if(!this.assetNameToKittyModel.ContainsKey(kittyModel.primaryAssetName)) {
-				this.assetNameToKittyModel.Add(kittyModel.primaryAssetName, kittyModel);
+			if(!this.assetNameToModel.ContainsKey(kittyModel.primaryAssetName)) {
+				this.assetNameToModel.Add(kittyModel.primaryAssetName, kittyModel);
 			}
 		}
 		// commit models to json file
@@ -47,21 +49,21 @@ public class KittyData {
 	// IMPLEMENTATION METHODS
 
 	private void InitDirectories() {
-		string savePath = GetFormattedSaveDirPath();
+		string savePath = GetSaveDirPath();
 		if(!Directory.Exists(savePath)) {
 			Directory.CreateDirectory(savePath);
 		}
 	}
 
 	private void LoadRecords() {
-		string savePath = GetFormattedSaveFilePath();
+		string savePath = GetSavePath();
 		if(File.Exists(savePath)) {
 			string json = File.ReadAllText(savePath);
 			// Debug.Log("Loaded json: " + json);
 			KittySave kittySave = JsonUtility.FromJson<KittySave>(json);
-			foreach (var kittyModel in kittySave.kittyModels) {
+			foreach (var kittyModel in kittySave.models) {
 				// Debug.Log("kitty model asset name: " + kittyModel.assetName);
-				this.assetNameToKittyModel.Add(
+				this.assetNameToModel.Add(
 					kittyModel.primaryAssetName,
 					kittyModel
 				);
@@ -71,20 +73,20 @@ public class KittyData {
 
 	private void SynchRecordsToJsonFile() {
 		this.InitDirectories();
-		var kittySave = new KittySave(this.assetNameToKittyModel.Values.ToList());
+		var kittySave = new KittySave(this.GetModels());
 		string json = JsonUtility.ToJson(
-			kittySave, 
+			kittySave,
 			true
 		);
 		// Debug.Log("SynchRecordsToJsonFile json: " + json);
-		File.WriteAllText(this.GetFormattedSaveFilePath(), json, Encoding.UTF8);
+		File.WriteAllText(this.GetSavePath(), json, Encoding.UTF8);
 	}
 
-	private string GetFormattedSaveDirPath() {
+	private string GetSaveDirPath() {
 		return Application.persistentDataPath + SAVE_DIR;
 	}
 
-	private string GetFormattedSaveFilePath() {
+	private string GetSavePath() {
 		return Application.persistentDataPath + SAVE_DIR + SAVE_FILE;
 	}
 
