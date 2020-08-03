@@ -13,6 +13,7 @@ public class KittyData {
 	private const string SAVE_DIR = "/";
 	private const string SAVE_FILE = "kitty.json";
 
+	// use primary asset name as key for lookups
 	private IDictionary<string, KittyModel> assetNameToKittyModel;
 
 
@@ -35,8 +36,8 @@ public class KittyData {
 	public void SaveModels(List<KittyModel> models) {
 		// add models if they don't yet exist
 		foreach (var kittyModel in models) {
-			if(!this.assetNameToKittyModel.ContainsKey(kittyModel.assetName)) {
-				this.assetNameToKittyModel.Add(kittyModel.assetName, kittyModel);
+			if(!this.assetNameToKittyModel.ContainsKey(kittyModel.primaryAssetName)) {
+				this.assetNameToKittyModel.Add(kittyModel.primaryAssetName, kittyModel);
 			}
 		}
 		// commit models to json file
@@ -61,7 +62,7 @@ public class KittyData {
 			foreach (var kittyModel in kittySave.kittyModels) {
 				// Debug.Log("kitty model asset name: " + kittyModel.assetName);
 				this.assetNameToKittyModel.Add(
-					kittyModel.assetName,
+					kittyModel.primaryAssetName,
 					kittyModel
 				);
 			}
