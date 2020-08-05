@@ -20,10 +20,6 @@ public class DataStartup {
 			Resources.LoadAll("Kitty", typeof(Sprite))
 			.Cast<Sprite>()
 			.ToList();
-		List<Sprite> kittyThumbSprites =
-			Resources.LoadAll("KittyThumb", typeof(Sprite))
-			.Cast<Sprite>()
-			.ToList();
 		var kittiesToSave = new List<KittyModel>();
 		foreach (var kittySprite in kittySprites) {
 			// create kitty model if it doesn't yet exist
@@ -45,8 +41,12 @@ public class DataStartup {
 				kittySprite
 			);
 		}
+		// save thumb kitty sprites to Asset service
+		List<Sprite> kittyThumbSprites =
+			Resources.LoadAll("KittyThumb", typeof(Sprite))
+			.Cast<Sprite>()
+			.ToList();
 		foreach(var kittyThumbSprite in kittyThumbSprites) {
-			// register assets
 			string thumbAddress = KittyService.GetFormattedThumbAssetAddress(
 				kittyThumbSprite.name,
 				true
@@ -56,16 +56,14 @@ public class DataStartup {
 				kittyThumbSprite
 			);
 		}
-		// if any assets do not yet exist as records in the
-		// datastore, insert them with a default state
+		// insert kitties to be saved
 		KittyService.SaveMultiple(kittiesToSave);
 
-		// WORKING HERE...
-
 		// accessories startup processes
+		var accessoriesToSave = new List<AccessoryModel>();
 		foreach(string accessoryGroup in AccessoryService.accessoryGroups) {
 			foreach(string accessorySubGroup in AccessoryService.accessorySubGroups) {
-
+				// load accessory sprites from Resources
 				string addressDir = AccessoryService.GetFormattedAssetDirectory(
 					accessoryGroup,
 					accessorySubGroup
@@ -74,14 +72,12 @@ public class DataStartup {
 					Resources.LoadAll(addressDir, typeof(Sprite))
 					.Cast<Sprite>()
 					.ToList();
-				Debug.Log(
-					"count accessory sprites: " +
-					accessorySprites.Count.ToString()
-				);
-
+				// Debug.Log(
+				// 	"count accessory sprites: " +
+				// 	accessorySprites.Count.ToString()
+				// );
 				// create accessory models if they don't yet exist
 				foreach(Sprite accessorySprite in accessorySprites) {
-					// create kitty model if it doesn't yet exist
 					var accessoryModel = AccessoryService.GetModelByAssetName(
 						accessorySprite.name
 					);
@@ -104,11 +100,45 @@ public class DataStartup {
 							false,
 							false
 						);
+						accessoriesToSave.Add(accessoryModel);
 					}
+					// register assets
+					AssetService.SetSprite(
+						AccessoryService.GetFormattedAssetAddress(
+							accessoryGroup,
+							accessorySubGroup,
+							accessorySprite.name
+						),
+						accessorySprite
+					);
 				}
-
+				// save thumb accessory sprites to Asset service
+				string thumbAddressDir = AccessoryService.GetFormattedThumbAssetDir(
+					accessoryGroup,
+					accessorySubGroup
+				);
+				List<Sprite> accessoryThumbSprites =
+					Resources.LoadAll(thumbAddressDir, typeof(Sprite))
+					.Cast<Sprite>()
+					.ToList();
+				foreach(var accessoryThumbSprite in accessoryThumbSprites) {
+					string thumbAddress = AccessoryService.GetFormattedThumbAssetAddress(
+						accessoryGroup,
+						accessorySubGroup,
+						accessoryThumbSprite.name,
+						true
+					);
+					AssetService.SetSprite(
+						thumbAddress,
+						accessoryThumbSprite
+					);
+				}
 			}
 		}
+		// Debug.Log("Count accessoriesToSave: " + accessoriesToSave.Count.ToString()); 
+		// insert accessories to be saved
+		AccessoryService.SaveMultiple(accessoriesToSave);
+
 	}
 
 	// IMPLEMENTATION METHODS

@@ -42,38 +42,48 @@ public class AccessoryService {
 
 	public static string GetFormattedAssetDirectory(
 		string accessoryGroup,
-		string accessorySubgroup
+		string accessorySubGroup
 	) {
 		return AccessoryService.assetNamespace +
 			"/" + accessoryGroup +
-			"/" + accessorySubgroup;
+			"/" + accessorySubGroup;
 	}
 
 	public static string GetFormattedAssetAddress(
 		string accessoryGroup,
-		string accessorySubgroup,
+		string accessorySubGroup,
 		string spriteName
 	) {
 		return AccessoryService.assetNamespace +
 			"/" + accessoryGroup +
-			"/" + accessorySubgroup +
+			"/" + accessorySubGroup +
 			"/" + spriteName;
 	}
 
 	public static string GetFormattedThumbAssetAddress(
 		string accessoryGroup,
-		string accessorySubgroup,
+		string accessorySubGroup,
 		string spriteName,
 		bool isThumbSpriteName=false
 	) {
 		string address = AccessoryService.thumbAssetNamespace +
 			"/" + accessoryGroup +
-			"/" + accessorySubgroup +
+			"/" + accessorySubGroup +
 			"/" + spriteName;
 		if(!isThumbSpriteName) {
 			address = address + "Thumb";
 		}
 		return address;
+	}
+
+	public static string GetFormattedThumbAssetDir(
+		string accessoryGroup,
+		string accessorySubGroup
+	) {
+		string dir = AccessoryService.thumbAssetNamespace +
+			"/" + accessoryGroup +
+			"/" + accessorySubGroup;
+		return dir;
 	}
 
 
