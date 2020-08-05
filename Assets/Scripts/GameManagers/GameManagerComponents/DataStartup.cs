@@ -86,17 +86,17 @@ public class DataStartup {
 						accessorySprite.name
 					);
 					if(accessoryModel == null) {
-						accessoryModel = AccessoryModel(
+						accessoryModel = new AccessoryModel(
 							"none",
 							accessorySprite.name,
 							AccessoryService.GetFormattedAssetAddress(
 								accessoryGroup,
-								accessorySubgroup,
+								accessorySubGroup,
 								accessorySprite.name
 							),
 							AccessoryService.GetFormattedThumbAssetAddress(
 								accessoryGroup,
-								accessorySubgroup,
+								accessorySubGroup,
 								accessorySprite.name
 							),
 							accessoryGroup,
