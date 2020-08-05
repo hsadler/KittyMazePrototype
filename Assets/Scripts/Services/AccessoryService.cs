@@ -10,7 +10,7 @@ public class AccessoryService {
 	private static string assetNamespace = "Accessory";
 	private static string thumbAssetNamespace = "AccessoryThumb";
 
-	public static List<string> accessoryGroups = new List<string> 
+	public static List<string> accessoryGroups = new List<string>
 	{ "Head", "Feet", "Body", "Tail" };
 	public static List<string> accessorySubGroups = new List<string>
 	{ "L1", "M1", "N1" };
@@ -41,34 +41,34 @@ public class AccessoryService {
 	}
 
 	public static string GetFormattedAssetDirectory(
-		string accessoryGroup, 
+		string accessoryGroup,
 		string accessorySubgroup
 	) {
-		return AccessoryService.assetNamespace + 
-			"/" + accessoryGroup + 
+		return AccessoryService.assetNamespace +
+			"/" + accessoryGroup +
 			"/" + accessorySubgroup;
 	}
 
 	public static string GetFormattedAssetAddress(
-		string accessoryGroup, 
-		string accessorySubgroup, 
+		string accessoryGroup,
+		string accessorySubgroup,
 		string spriteName
 	) {
-		return AccessoryService.assetNamespace + 
-			"/" + accessoryGroup + 
-			"/" + accessorySubgroup + 
+		return AccessoryService.assetNamespace +
+			"/" + accessoryGroup +
+			"/" + accessorySubgroup +
 			"/" + spriteName;
 	}
 
 	public static string GetFormattedThumbAssetAddress(
-		string accessoryGroup, 
-		string accessorySubgroup, 
+		string accessoryGroup,
+		string accessorySubgroup,
 		string spriteName,
 		bool isThumbSpriteName=false
 	) {
-		string address = AccessoryService.thumbAssetNamespace + 
-			"/" + accessoryGroup + 
-			"/" + accessorySubgroup + 
+		string address = AccessoryService.thumbAssetNamespace +
+			"/" + accessoryGroup +
+			"/" + accessorySubgroup +
 			"/" + spriteName;
 		if(!isThumbSpriteName) {
 			address = address + "Thumb";

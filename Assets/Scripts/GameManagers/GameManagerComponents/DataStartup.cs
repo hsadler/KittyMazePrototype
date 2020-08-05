@@ -62,22 +62,53 @@ public class DataStartup {
 
 		// WORKING HERE...
 
-		// TODO: accessories startup processes
+		// accessories startup processes
 		foreach(string accessoryGroup in AccessoryService.accessoryGroups) {
 			foreach(string accessorySubGroup in AccessoryService.accessorySubGroups) {
-				string address = AccessoryService.GetFormattedAssetDirectory(
-					accessoryGroup, 
+
+				string addressDir = AccessoryService.GetFormattedAssetDirectory(
+					accessoryGroup,
 					accessorySubGroup
 				);
-				List<Sprite> accessorySprites = Resources.LoadAll(address, typeof(Sprite))
+				List<Sprite> accessorySprites =
+					Resources.LoadAll(addressDir, typeof(Sprite))
 					.Cast<Sprite>()
 					.ToList();
-				Debug.Log("count accessory sprites: " + accessorySprites.Count.ToString());
+				Debug.Log(
+					"count accessory sprites: " +
+					accessorySprites.Count.ToString()
+				);
+
+				// create accessory models if they don't yet exist
+				foreach(Sprite accessorySprite in accessorySprites) {
+					// create kitty model if it doesn't yet exist
+					var accessoryModel = AccessoryService.GetModelByAssetName(
+						accessorySprite.name
+					);
+					if(accessoryModel == null) {
+						accessoryModel = AccessoryModel(
+							"none",
+							accessorySprite.name,
+							AccessoryService.GetFormattedAssetAddress(
+								accessoryGroup,
+								accessorySubgroup,
+								accessorySprite.name
+							),
+							AccessoryService.GetFormattedThumbAssetAddress(
+								accessoryGroup,
+								accessorySubgroup,
+								accessorySprite.name
+							),
+							accessoryGroup,
+							accessorySubGroup,
+							false,
+							false
+						);
+					}
+				}
+
 			}
 		}
-			// - for each accessory type
-			// - for each letter named directory
-
 	}
 
 	// IMPLEMENTATION METHODS
