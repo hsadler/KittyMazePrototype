@@ -60,7 +60,23 @@ public class DataStartup {
 		// datastore, insert them with a default state
 		KittyService.SaveMultiple(kittiesToSave);
 
+		// WORKING HERE...
+
 		// TODO: accessories startup processes
+		foreach(string accessoryGroup in AccessoryService.accessoryGroups) {
+			foreach(string accessorySubGroup in AccessoryService.accessorySubGroups) {
+				string address = AccessoryService.GetFormattedAssetDirectory(
+					accessoryGroup, 
+					accessorySubGroup
+				);
+				List<Sprite> accessorySprites = Resources.LoadAll(address, typeof(Sprite))
+					.Cast<Sprite>()
+					.ToList();
+				Debug.Log("count accessory sprites: " + accessorySprites.Count.ToString());
+			}
+		}
+			// - for each accessory type
+			// - for each letter named directory
 
 	}
 
