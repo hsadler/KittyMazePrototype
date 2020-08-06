@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class AccessoryModel {
 
 	// MODEL FOR ACCESSORY
@@ -15,8 +16,6 @@ public class AccessoryModel {
 	public string thumbAssetAddress;
 	public string accessoryGroup;
 	public string accessorySubGroup;
-	public bool isUnlocked;
-	public bool isSelected;
 
 
 	public AccessoryModel(
@@ -25,9 +24,7 @@ public class AccessoryModel {
 		string primaryAssetAddress,
 		string thumbAssetAddress,
 		string accessoryGroup,
-		string accessorySubGroup,
-		bool isUnlocked,
-		bool isSelected
+		string accessorySubGroup
 	) {
 		this.id = id;
 		this.primaryAssetName = primaryAssetName;
@@ -35,8 +32,6 @@ public class AccessoryModel {
 		this.thumbAssetAddress = thumbAssetAddress;
 		this.accessoryGroup = accessoryGroup;
 		this.accessorySubGroup = accessorySubGroup;
-		this.isUnlocked = isUnlocked;
-		this.isSelected = isSelected;
 	}
 
 	// INTERFACE METHODS

@@ -15,7 +15,7 @@ public class DataStartup {
 	public void ExecuteStartupProcesses() {
 		var gm = GameManager.instance;
 
-		// search Resources directory for "Kitty" assets
+		// kitty startup processes
 		List<Sprite> kittySprites =
 			Resources.LoadAll("Kitty", typeof(Sprite))
 			.Cast<Sprite>()
@@ -72,12 +72,9 @@ public class DataStartup {
 					Resources.LoadAll(addressDir, typeof(Sprite))
 					.Cast<Sprite>()
 					.ToList();
-				// Debug.Log(
-				// 	"count accessory sprites: " +
-				// 	accessorySprites.Count.ToString()
-				// );
-				// create accessory models if they don't yet exist
+				// Debug.Log("count accessory sprites: " + accessorySprites.Count.ToString());
 				foreach(Sprite accessorySprite in accessorySprites) {
+					// create accessory models if they don't yet exist
 					var accessoryModel = AccessoryService.GetModelByAssetName(
 						accessorySprite.name
 					);
@@ -96,9 +93,7 @@ public class DataStartup {
 								accessorySprite.name
 							),
 							accessoryGroup,
-							accessorySubGroup,
-							false,
-							false
+							accessorySubGroup
 						);
 						accessoriesToSave.Add(accessoryModel);
 					}
@@ -135,9 +130,13 @@ public class DataStartup {
 				}
 			}
 		}
-		// Debug.Log("Count accessoriesToSave: " + accessoriesToSave.Count.ToString()); 
 		// insert accessories to be saved
 		AccessoryService.SaveMultiple(accessoriesToSave);
+
+		// TODO: 
+		// kitty-accessory startup processes
+		// var kittyModels = KittyService.GetAll();
+		// var accessoryModels = AccessoryService.GetAll();
 
 	}
 
