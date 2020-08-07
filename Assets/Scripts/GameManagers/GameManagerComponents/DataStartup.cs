@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq; 
 using UnityEngine;
-using System.Linq;
 
 public class DataStartup {
 
@@ -26,7 +26,7 @@ public class DataStartup {
 			var kittyModel = KittyService.GetModelByAssetName(kittySprite.name);
 			if(kittyModel == null) {
 				kittyModel = new KittyModel(
-					"none",
+					System.Guid.NewGuid().ToString(),
 					kittySprite.name,
 					KittyService.GetFormattedAssetAddress(kittySprite.name),
 					KittyService.GetFormattedThumbAssetAddress(kittySprite.name),
@@ -80,7 +80,7 @@ public class DataStartup {
 					);
 					if(accessoryModel == null) {
 						accessoryModel = new AccessoryModel(
-							"none",
+							System.Guid.NewGuid().ToString(),
 							accessorySprite.name,
 							AccessoryService.GetFormattedAssetAddress(
 								accessoryGroup,
@@ -135,8 +135,8 @@ public class DataStartup {
 
 		// TODO: 
 		// kitty-accessory startup processes
-		// var kittyModels = KittyService.GetAll();
-		// var accessoryModels = AccessoryService.GetAll();
+		var kittyModels = KittyService.GetAll();
+		var accessoryModels = AccessoryService.GetAll();
 
 	}
 
