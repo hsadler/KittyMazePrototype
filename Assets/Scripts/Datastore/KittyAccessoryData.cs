@@ -37,14 +37,25 @@ public class KittyAccessoryData {
 
 	public void SaveModels(List<KittyAccessoryModel> models) {
 		// add models if they don't yet exist
-		// TODO: FIX THIS
-		// foreach (var model in models) {
-		// 	if(!this.keyToModel.ContainsKey(accessoryModel.primaryAssetName)) {
-		// 		this.keyToModel.Add(accessoryModel.primaryAssetName, accessoryModel);
-		// 	}
-		// }
+		foreach (var model in models) {
+			string key = this.GetFormattedKeyFromModel(model);
+			if(!this.keyToModel.ContainsKey(key)) {
+				this.keyToModel.Add(key, model);
+			}
+		}
 		// commit models to json file
 		this.SynchRecordsToJsonFile();
+	}
+
+	public string GetFormattedKeyFromModel(KittyAccessoryModel model) {
+		return model.kittyId + model.accessoryId;
+	}
+
+	public string GetFormattedKeyFromKittyAndAccessoryCombination(
+		KittyModel kittyModel,
+		AccessoryModel accessoryModel
+	) {
+		return kittyModel.id + accessoryModel.id;
 	}
 
 	// IMPLEMENTATION METHODS
@@ -62,13 +73,11 @@ public class KittyAccessoryData {
 			string json = File.ReadAllText(savePath);
 			// Debug.Log("Loaded json: " + json);
 			var kittyAccessorySave = JsonUtility.FromJson<KittyAccessorySave>(json);
-			foreach (var kittyAccessoryModel in kittyAccessorySave.models) {
-				// Debug.Log("accessory model asset name: " + accessoryModel.assetName);
-				// TODO: FIX THIS
-				// this.keyToModel.Add(
-				// 	accessoryModel.primaryAssetName,
-				// 	accessoryModel
-				// );
+			foreach (var model in kittyAccessorySave.models) {
+				this.keyToModel.Add(
+					this.GetFormattedKeyFromModel(model),
+					model
+				);
 			}
 		}
 	}
