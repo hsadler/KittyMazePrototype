@@ -7,8 +7,6 @@ public class AccessoryModel {
 
 	// MODEL FOR ACCESSORY
 
-	// TODO: add more properties as needed
-
 
 	public string id;
 	public string primaryAssetName;
