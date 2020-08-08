@@ -10,6 +10,8 @@ public class KittyAccessoryModel {
 
 	public string kittyId;
 	public string accessoryId;
+	public string accessoryGroup;
+	public string accessorySubGroup;
 	public bool isUnlocked;
 	public bool isSelected;
 
@@ -17,11 +19,15 @@ public class KittyAccessoryModel {
 	public KittyAccessoryModel(
 		string kittyId,
 		string accessoryId,
+		string accessoryGroup,
+		string accessorySubGroup,
 		bool isUnlocked,
 		bool isSelected
 	) {
 		this.kittyId = kittyId;
 		this.accessoryId = accessoryId;
+		this.accessoryGroup = accessoryGroup;
+		this.accessorySubGroup = accessorySubGroup;
 		this.isUnlocked = isUnlocked;
 		this.isSelected = isSelected;
 	}

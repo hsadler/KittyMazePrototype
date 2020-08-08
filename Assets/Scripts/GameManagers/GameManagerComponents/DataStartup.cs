@@ -149,6 +149,8 @@ public class DataStartup {
 					kittyAccessoryModel = new KittyAccessoryModel(
 						kittyModel.id,
 						accessoryModel.id,
+						accessoryModel.accessoryGroup,
+						accessoryModel.accessorySubGroup,
 						false,
 						false
 					);
