@@ -3,7 +3,7 @@
 - TODO NEXT:
 	X solve "multiple selected accessories" problem with accessory groups and subGroups
 	X implement syncing of Kitty and Accessory resources with datastores
-	- implement KittyAccessory data syncing and service
+	X implement KittyAccessory data syncing and service
 	- implement kitty selection
 	- implement accessory selection
 

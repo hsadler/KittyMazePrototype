@@ -133,10 +133,30 @@ public class DataStartup {
 		// insert accessories to be saved
 		AccessoryService.SaveMultiple(accessoriesToSave);
 
-		// TODO: 
 		// kitty-accessory startup processes
 		var kittyModels = KittyService.GetAll();
 		var accessoryModels = AccessoryService.GetAll();
+		// create the kitty-accessory models if they don't yet exist
+		var kittyAccessoriesToSave = new List<KittyAccessoryModel>();
+		foreach(var kittyModel in kittyModels) {
+			foreach(var accessoryModel in accessoryModels) {
+				var kittyAccessoryModel = KittyAccessoryService.GetModelKittyAndAccessoryCombination(
+					kittyModel,
+					accessoryModel
+				);
+				if(kittyAccessoryModel == null) {
+					kittyAccessoryModel = new KittyAccessoryModel(
+						kittyModel.id,
+						accessoryModel.id,
+						false,
+						false
+					);
+					kittyAccessoriesToSave.Add(kittyAccessoryModel);
+				}
+			}
+		}
+		// insert kitty-accessories to be saved
+		KittyAccessoryService.SaveMultiple(kittyAccessoriesToSave);
 
 	}
 
