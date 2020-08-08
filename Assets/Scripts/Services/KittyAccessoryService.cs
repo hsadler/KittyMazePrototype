@@ -7,7 +7,7 @@ public class KittyAccessoryService {
 	// SERVICE FOR KITTY -> ACCESSORY RELATIONSHIPS
 
 
-	public static KittyAccessoryModel GetModelKittyAndAccessoryCombination(
+	public static KittyAccessoryModel GetModelByKittyAndAccessoryCombination(
 		KittyModel kittyModel, 
 		AccessoryModel accessoryModel
 	) {

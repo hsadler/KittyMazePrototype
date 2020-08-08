@@ -22,6 +22,15 @@ public class KittyService {
 		return null;
 	}
 
+	public static KittyModel GetModelById(string id) {
+		foreach(var model in KittyService.GetAll()) {
+			if(id == model.id) {
+				return model;
+			}
+		}
+		return null;
+	}
+
 	public static void SaveMultiple(List<KittyModel> models) {
 		GameManager.instance.kittyData.SaveModels(models);
 	}
@@ -36,12 +45,25 @@ public class KittyService {
 	}
 
 	public static KittyModel GetSelected() {
-		// STUB
+		foreach(var model in KittyService.GetAll()) {
+			if(model.isSelected) {
+				return model;
+			}
+		}
 		return null;
 	}
 
 	public static void SetSelected(KittyModel model) {
-		// STUB
+		// deselect currently selected
+		var previouslySelectedKitty = KittyService.GetSelected();
+		previouslySelectedKitty.isSelected = false;
+		// set selected
+		model.isSelected = true;
+		// batch save models
+		KittyService.SaveMultiple(
+			new List<KittyModel>() 
+			{ previouslySelectedKitty, model }
+		);
 	}
 
 	public static string GetFormattedAssetAddress(string spriteName) {

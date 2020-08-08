@@ -68,10 +68,10 @@ Classes and Definitions
 
 	AccessoryService
 		GetAllAccessories() : List<AccessoryModel>
-
-	KittyAccessoryService
 		GetSelectedAccessoriesForKitty(KittyModel kitty) : List<AccessoryModel>
 		SetSelectedAccessoryForKitty(KittyModel kitty, AccessoryModel accessory) : bool
+
+	KittyAccessoryService
 
 	MazeProgressService
 		GetMazeProgress() : MazeProgressModel

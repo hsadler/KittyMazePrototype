@@ -140,10 +140,11 @@ public class DataStartup {
 		var kittyAccessoriesToSave = new List<KittyAccessoryModel>();
 		foreach(var kittyModel in kittyModels) {
 			foreach(var accessoryModel in accessoryModels) {
-				var kittyAccessoryModel = KittyAccessoryService.GetModelKittyAndAccessoryCombination(
-					kittyModel,
-					accessoryModel
-				);
+				var kittyAccessoryModel = 
+					KittyAccessoryService.GetModelByKittyAndAccessoryCombination(
+						kittyModel,
+						accessoryModel
+					);
 				if(kittyAccessoryModel == null) {
 					kittyAccessoryModel = new KittyAccessoryModel(
 						kittyModel.id,

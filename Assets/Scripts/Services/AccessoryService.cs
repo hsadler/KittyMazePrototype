@@ -40,6 +40,20 @@ public class AccessoryService {
 		return GameManager.instance.accessoryData.GetModels();
 	}
 
+	public static List<AccessoryModel> GetSelectedAccessoriesForKitty(
+		KittyModel kittyModel
+	) {
+		// STUB
+		return null;
+	}
+
+	public static void SetSelectedAccessoryForKitty(
+		KittyModel kitty, 
+		AccessoryModel accessory
+	) {
+		// STUB
+	}
+
 	public static string GetFormattedAssetDirectory(
 		string accessoryGroup,
 		string accessorySubGroup
