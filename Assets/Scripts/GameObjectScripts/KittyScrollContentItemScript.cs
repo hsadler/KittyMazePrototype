@@ -6,12 +6,12 @@ using UnityEngine.UI;
 public class KittyScrollContentItemScript : MonoBehaviour {
 
 
-    public Image kittyImage;
+	public Image kittyImage;
 
-    
-    void Start() {}
+	
+	void Start() {}
 
-    void Update() {}
+	void Update() {}
 
 
 }

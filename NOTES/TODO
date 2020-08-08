@@ -4,8 +4,9 @@
 	X solve "multiple selected accessories" problem with accessory groups and subGroups
 	X implement syncing of Kitty and Accessory resources with datastores
 	X implement KittyAccessory data syncing and service
-	- implement kitty selection
-	- implement accessory selection
+	- accessory list rendering
+	- kitty selection
+	- accessory selection
 
 
 - TODO PHASE 2:

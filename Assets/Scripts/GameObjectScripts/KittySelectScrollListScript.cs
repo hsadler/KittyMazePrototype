@@ -12,6 +12,7 @@ public class KittySelectScrollListScript : MonoBehaviour {
 	void Start() {
 		List<KittyModel> kitties = KittyService.GetAll();
 		foreach (var kittyModel in kitties) {
+			// TODO: in the future, only display unlocked kitties
 			GameObject kittyScrollContentItem = Instantiate(
 				kittyScrollContentItemPrefab, 
 				scrollContent.transform

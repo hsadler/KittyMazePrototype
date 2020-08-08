@@ -1,18 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AccessoryScrollContentItemScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	
+	
+	public Image accessoryImage;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	
+	void Start() {}
+
+	void Update() {}
+
+
 }
