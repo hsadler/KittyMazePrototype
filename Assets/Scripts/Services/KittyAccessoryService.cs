@@ -23,6 +23,28 @@ public class KittyAccessoryService {
 		return null;
 	}
 
+	public static List<KittyAccessoryModel> GetModelsByKittyIds(
+		List<string> kittyIds
+	) {
+		var kittyIdToModel = new Dictionary<string, KittyAccessoryModel>();
+		foreach (var model in KittyAccessoryService.GetAll()) {
+			kittyIdToModel.Add(model.kittyId, model);
+		}
+		var resultModels = new List<KittyAccessoryModel>();
+		foreach (string kittyId in kittyIds) {
+			if (kittyIdToModel.ContainsKey(kittyId)) {
+				resultModels.Add(kittyIdToModel[kittyId]);
+			}
+		}
+		return resultModels;
+	}
+
+	public static List<KittyAccessoryModel> GetModelsByKittyId(string kittyId) {
+		return KittyAccessoryService.GetModelsByKittyIds(
+			new List<string>() { kittyId }
+		);
+	}
+
 	public static void SaveMultiple(List<KittyAccessoryModel> models) {
 		GameManager.instance.kittyAccessoryData.SaveModels(models);
 	}
