@@ -75,7 +75,15 @@ public class AccessoryService {
 		KittyModel kitty,
 		AccessoryModel accessory
 	) {
-		// STUB
+		// TODO: IMPLEMENT
+		var kittyAccessoriesForKitty = KittyAccessoryService.GetModelsByKittyId(
+			kitty.id
+		);
+		// mutate the kittyAccessory objects to ensure only one in the subgroup
+		// is selected and save
+		foreach (var kittyAccessoryModel in kittyAccessoriesForKitty) {
+			//if(kittyAccessoryModel)
+		}
 	}
 
 	public static string GetFormattedAssetDirectory(
