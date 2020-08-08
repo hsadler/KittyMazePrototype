@@ -27,6 +27,22 @@ public class AccessoryService {
 		return null;
 	}
 
+	public static List<AccessoryModel> GetModelsByIds(
+		List<string> accessoryIds
+	) {
+		var idToModel = new Dictionary<string, AccessoryModel>();
+        foreach (var model in AccessoryService.GetAll()) {
+			idToModel.Add(model.id, model);
+		}
+		var resultModels = new List<AccessoryModel>();
+		foreach (string id in accessoryIds) {
+			if (idToModel.ContainsKey(id)) {
+				resultModels.Add(idToModel[id]);
+			}
+		}
+		return resultModels;
+	}
+
 	public static void SaveMultiple(List<AccessoryModel> models) {
 		GameManager.instance.accessoryData.SaveModels(models);
 	}
@@ -43,12 +59,20 @@ public class AccessoryService {
 	public static List<AccessoryModel> GetSelectedAccessoriesForKitty(
 		KittyModel kittyModel
 	) {
-		// STUB
-		return null;
+		var selectedAccessoryIds = new List<string>();
+		foreach(var kittyAccessoryModel in KittyAccessoryService.GetAll()) {
+			if(
+				kittyAccessoryModel.kittyId == kittyModel.id &&
+				kittyAccessoryModel.isSelected
+			) {
+				selectedAccessoryIds.Add(kittyAccessoryModel.accessoryId);
+			}
+		}
+		return AccessoryService.GetModelsByIds(selectedAccessoryIds);
 	}
 
 	public static void SetSelectedAccessoryForKitty(
-		KittyModel kitty, 
+		KittyModel kitty,
 		AccessoryModel accessory
 	) {
 		// STUB
