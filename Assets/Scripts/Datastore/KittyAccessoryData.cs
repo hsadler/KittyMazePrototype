@@ -48,14 +48,14 @@ public class KittyAccessoryData {
 	}
 
 	public string GetFormattedKeyFromModel(KittyAccessoryModel model) {
-		return model.kittyId + model.accessoryId;
+		return model.kittyId + "_" + model.accessoryId;
 	}
 
 	public string GetFormattedKeyFromKittyAndAccessoryCombination(
 		KittyModel kittyModel,
 		AccessoryModel accessoryModel
 	) {
-		return kittyModel.id + accessoryModel.id;
+		return kittyModel.id + "_" + accessoryModel.id;
 	}
 
 	// IMPLEMENTATION METHODS

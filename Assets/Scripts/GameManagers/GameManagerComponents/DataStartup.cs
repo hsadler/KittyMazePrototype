@@ -13,9 +13,15 @@ public class DataStartup {
 	// INTERFACE METHODS
 
 	public void ExecuteStartupProcesses() {
-		var gm = GameManager.instance;
+		this.KittyStartupProcesses();
+		this.AccessoryStartupProcesses();
+		this.KittyAccessoryStartupProcesses();
+		this.DefautKittySelection();
+	}
 
-		// kitty startup processes
+	// IMPLEMENTATION METHODS
+
+	private void KittyStartupProcesses() {
 		List<Sprite> kittySprites =
 			Resources.LoadAll("Kitty", typeof(Sprite))
 			.Cast<Sprite>()
@@ -58,8 +64,9 @@ public class DataStartup {
 		}
 		// insert kitties to be saved
 		KittyService.SaveMultiple(kittiesToSave);
+	}
 
-		// accessories startup processes
+	private void AccessoryStartupProcesses() {
 		var accessoriesToSave = new List<AccessoryModel>();
 		foreach(string accessoryGroup in AccessoryService.accessoryGroups) {
 			foreach(string accessorySubGroup in AccessoryService.accessorySubGroups) {
@@ -132,8 +139,9 @@ public class DataStartup {
 		}
 		// insert accessories to be saved
 		AccessoryService.SaveMultiple(accessoriesToSave);
+	}
 
-		// kitty-accessory startup processes
+	private void KittyAccessoryStartupProcesses() {
 		var kittyModels = KittyService.GetAll();
 		var accessoryModels = AccessoryService.GetAll();
 		// create the kitty-accessory models if they don't yet exist
@@ -160,10 +168,34 @@ public class DataStartup {
 		}
 		// insert kitty-accessories to be saved
 		KittyAccessoryService.SaveMultiple(kittyAccessoriesToSave);
-
 	}
 
-	// IMPLEMENTATION METHODS
+	private void DefautKittySelection() {
+		var kitties = KittyService.GetAll();
+		bool kittySelected = false;
+		KittyModel kittyUnlocked = null;
+		foreach(var kitty in kitties) {
+			if(kitty.isSelected) {
+				kittySelected = true;
+			}
+			if(kittyUnlocked == null && kitty.isUnlocked) {
+				kittyUnlocked = kitty;
+			}
+		}
+		if(!kittySelected) {
+			if(kittyUnlocked != null) {
+				// set first kitty found that's unlocked to selected status
+				kittyUnlocked.isSelected = true;
+			} else {
+				// set random kitty to unlocked and selected
+				int randomKittyIndex = Random.Range(0, kitties.Count);
+				var randomKitty = kitties[randomKittyIndex];
+				randomKitty.isUnlocked = true;
+				randomKitty.isSelected = true;
+			}
+		}
+		KittyService.SaveMultiple(kitties);
+	}
 
 
 }
