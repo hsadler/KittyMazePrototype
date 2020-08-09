@@ -17,11 +17,14 @@ public class AccessorySelectScrollListScript : MonoBehaviour {
 				accessoryScrollContentItemPrefab, 
 				scrollContent.transform
 			);
-			// BUG: sprite not found on AssetService at key
 			Sprite sprite = AssetService.GetSprite(accessoryModel.thumbAssetAddress);
-			accessoryScrollContentItem.GetComponent<AccessoryScrollContentItemScript>()
-				.accessoryImage
-				.sprite = sprite;
+			if(sprite != null) {
+				accessoryScrollContentItem.GetComponent<AccessoryScrollContentItemScript>()
+					.accessoryImage
+					.sprite = sprite;
+			} else {
+				Debug.Log("Sprite not found at address: " + accessoryModel.thumbAssetAddress);
+			}
 		}
 	}
 
