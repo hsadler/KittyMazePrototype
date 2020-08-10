@@ -18,9 +18,10 @@ public class KittySelectScrollListScript : MonoBehaviour {
 				scrollContent.transform
 			);
 			Sprite sprite = AssetService.GetSprite(kittyModel.thumbAssetAddress);
-			kittyScrollContentItem.GetComponent<KittyScrollContentItemScript>()
-				.kittyImage
-				.sprite = sprite;
+			var script = kittyScrollContentItem
+				.GetComponent<KittyScrollContentItemScript>();
+			script.kittyImage.sprite = sprite;
+			script.kittyModel = kittyModel;
 		}
 	}
 

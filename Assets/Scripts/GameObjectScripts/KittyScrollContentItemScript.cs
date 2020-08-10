@@ -7,11 +7,17 @@ public class KittyScrollContentItemScript : MonoBehaviour {
 
 
 	public Image kittyImage;
+	public KittyModel kittyModel;
 
 	
 	void Start() {}
 
 	void Update() {}
+
+	public void SelectKitty() {
+		print("selecting kitty...");
+		KittyService.SetSelected(kittyModel);
+	}
 
 
 }
