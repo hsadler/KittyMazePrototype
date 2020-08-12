@@ -78,7 +78,7 @@ public class AccessoryService {
 		var kittyAccessoriesForKitty = KittyAccessoryService.GetModelsByKittyId(
 			kitty.id
 		);
-		// mutate the kittyAccessory objects to ensure only one in the 
+		// mutate the kittyAccessory objects to ensure only one in the
 		// group+subgroup is selected and save
 		foreach (var kittyAccessoryModel in kittyAccessoriesForKitty) {
 			if(

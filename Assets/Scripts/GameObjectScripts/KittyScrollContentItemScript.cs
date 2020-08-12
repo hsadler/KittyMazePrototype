@@ -15,8 +15,8 @@ public class KittyScrollContentItemScript : MonoBehaviour {
 	void Update() {}
 
 	public void SelectKitty() {
-		print("selecting kitty...");
-		KittyService.SetSelected(kittyModel);
+		print("selecting kitty: " + this.kittyModel.primaryAssetAddress);
+		KittyService.SetSelected(this.kittyModel);
 	}
 
 

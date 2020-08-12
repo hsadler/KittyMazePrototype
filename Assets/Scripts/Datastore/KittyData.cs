@@ -36,6 +36,9 @@ public class KittyData {
 	}
 
 	public void SaveModels(List<KittyModel> models) {
+		foreach (var model in models) {
+			Debug.Log(model.primaryAssetAddress + " isSelected: " + model.isSelected.ToString());
+		}
 		// add models if they don't yet exist
 		foreach (var kittyModel in models) {
 			if(!this.assetNameToModel.ContainsKey(kittyModel.primaryAssetName)) {

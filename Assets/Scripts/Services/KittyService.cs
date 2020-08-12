@@ -56,6 +56,11 @@ public class KittyService {
 	public static void SetSelected(KittyModel model) {
 		// deselect currently selected
 		var previouslySelectedKitty = KittyService.GetSelected();
+		if (model.id == previouslySelectedKitty.id)
+		{
+			Debug.Log("attempting to select already selected kitty: " + model.primaryAssetAddress);
+			return;
+        }
 		previouslySelectedKitty.isSelected = false;
 		// set selected
 		model.isSelected = true;
