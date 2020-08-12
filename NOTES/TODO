@@ -7,7 +7,12 @@
 	X accessory list rendering
 	X default kitty selection
 	X kitty selection
-	X accessory selection
+	X accessory selection (may be buggy)
+	- maze player kitty-thumb display reflecting selected kitty
+	- kitty display reflecting selected kitty
+	- kitty display reflecting selected accessories per kitty
+	- display only unlocked kitties for selection
+	- display only unlocked accessories for selection
 
 
 - TODO PHASE 2:
@@ -26,8 +31,8 @@
 		X wall
 	X maze generation service
 	X rendering of maze model
-	- selected kitty
-	- selected accessories per kitty
+	X selected kitty
+	X selected accessories per kitty
 	- maze progression
 	- unlock new accessory or new kitty
 	- maze stats data collection
