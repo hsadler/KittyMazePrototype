@@ -17,14 +17,15 @@ public class AccessorySelectScrollListScript : MonoBehaviour {
 				accessoryScrollContentItemPrefab, 
 				scrollContent.transform
 			);
+			var script = accessoryScrollContentItem.GetComponent<AccessoryScrollContentItemScript>();
 			Sprite sprite = AssetService.GetSprite(accessoryModel.thumbAssetAddress);
 			if(sprite != null) {
-				accessoryScrollContentItem.GetComponent<AccessoryScrollContentItemScript>()
-					.accessoryImage
-					.sprite = sprite;
+				script.accessoryImage.sprite = sprite;
 			} else {
 				Debug.Log("Sprite not found at address: " + accessoryModel.thumbAssetAddress);
 			}
+			script.kittyModel = KittyService.GetSelected();
+			script.accessoryModel = accessoryModel;
 		}
 	}
 

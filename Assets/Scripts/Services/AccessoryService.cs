@@ -92,6 +92,7 @@ public class AccessoryService {
 				}
 			}
 		}
+		KittyAccessoryService.SaveMultiple(KittyAccessoryService.GetAll());
 	}
 
 	public static string GetFormattedAssetDirectory(

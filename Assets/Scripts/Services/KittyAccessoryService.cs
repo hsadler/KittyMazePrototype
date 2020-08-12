@@ -26,15 +26,16 @@ public class KittyAccessoryService {
 	public static List<KittyAccessoryModel> GetModelsByKittyIds(
 		List<string> kittyIds
 	) {
-		var kittyIdToModel = new Dictionary<string, KittyAccessoryModel>();
-		foreach (var model in KittyAccessoryService.GetAll()) {
-			kittyIdToModel.Add(model.kittyId, model);
-		}
 		var resultModels = new List<KittyAccessoryModel>();
+		var kittyIdsDict = new Dictionary<string, bool>();
 		foreach (string kittyId in kittyIds) {
-			if (kittyIdToModel.ContainsKey(kittyId)) {
-				resultModels.Add(kittyIdToModel[kittyId]);
-			}
+			kittyIdsDict.Add(kittyId, true);
+		}
+		var kittyAccessories = KittyAccessoryService.GetAll();
+		foreach (var kittyAccessory in kittyAccessories) {
+			if(kittyIdsDict.ContainsKey(kittyAccessory.kittyId)) {
+				resultModels.Add(kittyAccessory);
+			}	
 		}
 		return resultModels;
 	}
