@@ -36,9 +36,9 @@ public class KittyData {
 	}
 
 	public void SaveModels(List<KittyModel> models) {
-		foreach (var model in models) {
-			Debug.Log(model.primaryAssetAddress + " isSelected: " + model.isSelected.ToString());
-		}
+		// foreach (var model in models) {
+		// 	Debug.Log(model.primaryAssetAddress + " isSelected: " + model.isSelected.ToString());
+		// }
 		// add models if they don't yet exist
 		foreach (var kittyModel in models) {
 			if(!this.assetNameToModel.ContainsKey(kittyModel.primaryAssetName)) {
@@ -81,9 +81,9 @@ public class KittyData {
 			kittySave,
 			true
 		);
-        Debug.Log("SynchRecordsToJsonFile filepath: " + this.GetSavePath());
-        Debug.Log("SynchRecordsToJsonFile json: " + json);
-        File.WriteAllText(this.GetSavePath(), json, Encoding.UTF8);
+		// Debug.Log("SynchRecordsToJsonFile filepath: " + this.GetSavePath());
+		// Debug.Log("SynchRecordsToJsonFile json: " + json);
+		File.WriteAllText(this.GetSavePath(), json, Encoding.UTF8);
 	}
 
 	private string GetSaveDirPath() {
