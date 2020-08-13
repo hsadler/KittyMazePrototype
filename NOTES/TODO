@@ -8,7 +8,7 @@
 	X default kitty selection
 	X kitty selection
 	X accessory selection (may be buggy)
-	- maze player kitty-thumb display reflecting selected kitty
+	X maze player kitty-thumb display reflecting selected kitty
 	- kitty display reflecting selected kitty
 	- kitty display reflecting selected accessories per kitty
 	- display only unlocked kitties for selection
