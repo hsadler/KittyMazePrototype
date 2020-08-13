@@ -1,25 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class KittyScript : MonoBehaviour {
 
 
-    public GameObject kittyContainer;
-    public GameObject bowContainer;
-    public GameObject scarfContainer;
-    public GameObject bootsContainer;
+	public Image kittyImage;
 
 
-    // UNITY HOOKS
+	// UNITY HOOKS
 
-    void Start() {
-        // example of loading resources by name
-        //GameObject bowBlue = Resources.Load<GameObject>("BowBlue");
-        //Instantiate(bowBlue, this.gameObject.transform);
-    }
+	void Start() {
+		this.FetchKittyImage();
+	}
 
-    void Update() {}
+	void Update() {}
+
+	// INTERFACE METHODS
+
+	// IMPLEMENTATION METHODS
+
+	private void FetchKittyImage() {
+		KittyModel kittyModel = KittyService.GetSelected();
+		Sprite kittySprite = AssetService.GetSprite(kittyModel.primaryAssetAddress);
+		kittyImage.sprite = kittySprite;
+	}
 
 
 }
