@@ -9,8 +9,7 @@
 	X kitty selection
 	X accessory selection (may be buggy)
 	X maze player kitty-thumb display reflecting selected kitty
-	- kitty display reflecting selected kitty:
-		- add Events class to GameManager for event listening
+	X kitty display reflecting selected kitty:
 	- kitty display reflecting selected accessories per kitty
 	- display only unlocked kitties for selection
 	- display only unlocked accessories for selection

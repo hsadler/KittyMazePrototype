@@ -13,6 +13,7 @@ public class KittyScript : MonoBehaviour {
 
 	void Start() {
 		this.FetchKittyImage();
+		GameManager.instance.unityEvents.kittySelectEvent.AddListener(this.FetchKittyImage);
 	}
 
 	void Update() {}

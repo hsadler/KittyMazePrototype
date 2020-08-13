@@ -16,6 +16,7 @@ public class KittyScrollContentItemScript : MonoBehaviour {
 
 	public void SelectKitty() {
 		KittyService.SetSelected(this.kittyModel);
+		GameManager.instance.unityEvents.kittySelectEvent.Invoke();
 	}
 
 
