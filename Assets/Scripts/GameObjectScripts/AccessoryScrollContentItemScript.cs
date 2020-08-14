@@ -17,7 +17,7 @@ public class AccessoryScrollContentItemScript : MonoBehaviour {
 
 	public void SelectAccessory() {
 		AccessoryService.SetSelectedAccessoryForKitty(kittyModel, accessoryModel);
-		GameManager.instance.unityEvents.kittySelectEvent.Invoke();
+		GameManager.instance.unityEvents.accessorySelectEvent.Invoke();
 	}
 
 
