@@ -95,6 +95,30 @@ public class AccessoryService {
 		KittyAccessoryService.SaveMultiple(KittyAccessoryService.GetAll());
 	}
 
+	public static void ToggleSelectedAccessoryForKitty(
+		KittyModel kitty,
+		AccessoryModel accessory
+	) {
+		var kittyAccessoriesForKitty = KittyAccessoryService.GetModelsByKittyId(
+			kitty.id
+		);
+		// mutate the kittyAccessory objects to ensure only one in the
+		// group+subgroup is selected and save
+		foreach (var kittyAccessoryModel in kittyAccessoriesForKitty) {
+			if(
+				kittyAccessoryModel.accessoryGroup == accessory.accessoryGroup &&
+				kittyAccessoryModel.accessorySubGroup == accessory.accessorySubGroup
+			) {
+				if(kittyAccessoryModel.accessoryId == accessory.id) {
+					kittyAccessoryModel.isSelected = !kittyAccessoryModel.isSelected;
+				} else {
+					kittyAccessoryModel.isSelected = false;
+				}
+			}
+		}
+		KittyAccessoryService.SaveMultiple(KittyAccessoryService.GetAll());
+	}
+	
 	public static string GetFormattedAssetDirectory(
 		string accessoryGroup,
 		string accessorySubGroup

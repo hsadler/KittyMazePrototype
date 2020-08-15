@@ -11,14 +11,20 @@ public class AccessoryScrollContentItemScript : MonoBehaviour {
 	public AccessoryModel accessoryModel;
 
 	
+	// UNITY HOOKS
+
 	void Start() {}
 
 	void Update() {}
 
+	// INTERFACE METHODS
+
 	public void SelectAccessory() {
-		AccessoryService.SetSelectedAccessoryForKitty(kittyModel, accessoryModel);
+		AccessoryService.ToggleSelectedAccessoryForKitty(kittyModel, accessoryModel);
 		GameManager.instance.unityEvents.accessorySelectEvent.Invoke();
 	}
+
+	// IMPLEMENTATION METHODS
 
 
 }
