@@ -40,6 +40,7 @@ public class MazeSceneManager : MonoBehaviour {
 	// INTERFACE METHODS
 
 	public void MazeComplete() {
+		this.UnlockRandomAccessory();
 		this.ReloadMazeScene();
 	}
 
@@ -77,6 +78,10 @@ public class MazeSceneManager : MonoBehaviour {
 			-1.5f
 		); 
 		GameObject.Instantiate(playerObjectPrefab, pos, Quaternion.identity);
+	}
+
+	private void UnlockRandomAccessory() {
+		// STUB
 	}
 
 	private void ReloadMazeScene() {
