@@ -1,49 +1,16 @@
 
 
 - TODO NEXT:
-	X solve "multiple selected accessories" problem with accessory groups and subGroups
-	X implement syncing of Kitty and Accessory resources with datastores
-	X implement KittyAccessory data syncing and service
-	X accessory list rendering
-	X default kitty selection
-	X kitty selection
-	X accessory selection (may be buggy)
-	X maze player kitty-thumb display reflecting selected kitty
-	X kitty display reflecting selected kitty:
-	X kitty display reflecting selected accessories per kitty
-	X display only unlocked kitties for selection
-	X display only unlocked accessories for selection
-
-
-- TODO PHASE 2:
+	- poc unlock of kitty or accessory on maze completion
 	- mock maze-progression modal
-	- mock accessory unlock
 
 
 - SYSTEMS:
-	X MazeSceneManager
-	X start-point
-	X end-point
-	X scene reload
-	X maze data models:
-		X maze
-		X cell
-		X wall
-	X maze generation service
-	X rendering of maze model
-	X selected kitty
-	X selected accessories per kitty
 	- maze progression
 	- unlock new accessory or new kitty
-	- maze stats data collection
 
 
 - UX:
-	X MainMenu Scene 1st pass
-	X DressUp Scene 1st pass
-	X Maze Scene 1st pass
-	- kitty accessories click-equip in dressup-scene
-	- KittySelect Scene 1st pass
 	- maze completion modal and experience
 
 

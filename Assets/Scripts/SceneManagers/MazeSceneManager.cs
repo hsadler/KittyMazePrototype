@@ -40,7 +40,7 @@ public class MazeSceneManager : MonoBehaviour {
 	// INTERFACE METHODS
 
 	public void MazeComplete() {
-		this.UnlockRandomAccessory();
+		this.UnlockRandomKittyOrAccessory();
 		this.ReloadMazeScene();
 	}
 
@@ -80,7 +80,8 @@ public class MazeSceneManager : MonoBehaviour {
 		GameObject.Instantiate(playerObjectPrefab, pos, Quaternion.identity);
 	}
 
-	private void UnlockRandomAccessory() {
+	private void UnlockRandomKittyOrAccessory() {
+		print("Unlocking random kitty or accessory...");
 		// STUB
 	}
 
