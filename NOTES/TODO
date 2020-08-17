@@ -11,8 +11,8 @@
 	X maze player kitty-thumb display reflecting selected kitty
 	X kitty display reflecting selected kitty:
 	X kitty display reflecting selected accessories per kitty
-	- display only unlocked kitties for selection
-	- display only unlocked accessories for selection
+	X display only unlocked kitties for selection
+	X display only unlocked accessories for selection
 
 
 - TODO PHASE 2:

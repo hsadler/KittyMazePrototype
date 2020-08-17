@@ -28,28 +28,37 @@ public class AccessorySelectScrollListScript : MonoBehaviour {
 	// IMPLEMENTATION METHODS
 
 	private void RenderAccessoryItems() {
+		var selectedKittyModel = KittyService.GetSelected();
 		// clear the exising accessory items in the scroll list
 		foreach(var accessoryItem in this.accessoryItems) {
 			GameObject.Destroy(accessoryItem);
 		}
 		this.accessoryItems.Clear();
+		// setup kitty-accessory models for lookups
+		var accessoryIdToKittyAccessoryModel = new Dictionary<string, KittyAccessoryModel>();
+		foreach(var kittyAccessoryModel in KittyAccessoryService.GetModelsByKittyId(selectedKittyModel.id)) {
+			accessoryIdToKittyAccessoryModel.Add(kittyAccessoryModel.accessoryId, kittyAccessoryModel);
+		}
 		List<AccessoryModel> accessories = AccessoryService.GetAll();
 		foreach (var accessoryModel in accessories) {
-			// TODO: in the future, only display unlocked accessories per currenlty selected kitty
-			GameObject accessoryScrollContentItem = Instantiate(
-				accessoryScrollContentItemPrefab, 
-				scrollContent.transform
-			);
-			var script = accessoryScrollContentItem.GetComponent<AccessoryScrollContentItemScript>();
-			Sprite sprite = AssetService.GetSprite(accessoryModel.thumbAssetAddress);
-			if(sprite != null) {
-				script.accessoryImage.sprite = sprite;
-			} else {
-				Debug.Log("Sprite not found at address: " + accessoryModel.thumbAssetAddress);
+			var kittyAccessoryModel = accessoryIdToKittyAccessoryModel[accessoryModel.id];
+			// create accessory item per unlocked accessory item for currently selected kitty
+			if(kittyAccessoryModel.isUnlocked) {
+				GameObject accessoryScrollContentItem = Instantiate(
+					accessoryScrollContentItemPrefab, 
+					scrollContent.transform
+				);
+				var script = accessoryScrollContentItem.GetComponent<AccessoryScrollContentItemScript>();
+				Sprite sprite = AssetService.GetSprite(accessoryModel.thumbAssetAddress);
+				if(sprite != null) {
+					script.accessoryImage.sprite = sprite;
+				} else {
+					Debug.Log("Sprite not found at address: " + accessoryModel.thumbAssetAddress);
+				}
+				script.kittyModel = selectedKittyModel;
+				script.accessoryModel = accessoryModel;
+				this.accessoryItems.Add(accessoryScrollContentItem);
 			}
-			script.kittyModel = KittyService.GetSelected();
-			script.accessoryModel = accessoryModel;
-			this.accessoryItems.Add(accessoryScrollContentItem);
 		}
 	}
 
