@@ -8,13 +8,15 @@ public class KittySelectScrollListScript : MonoBehaviour {
 	public GameObject scrollContent;
 	public GameObject kittyScrollContentItemPrefab;
 
+	private const bool VIEW_ALL_KITTIES = true;
+
 
 	// UNITY HOOKS
 
 	void Start() {
 		List<KittyModel> kitties = KittyService.GetAll();
 		foreach (var kittyModel in kitties) {
-			if(kittyModel.isUnlocked) {
+			if(kittyModel.isUnlocked || VIEW_ALL_KITTIES) {
 				GameObject kittyScrollContentItem = Instantiate(
 					kittyScrollContentItemPrefab, 
 					scrollContent.transform
