@@ -56,6 +56,18 @@ public class AccessoryService {
 		return GameManager.instance.accessoryData.GetModels();
 	}
 
+	public static List<AccessoryModel> GetAccessoriesForKitty(
+		KittyModel kittyModel
+	) {
+		var selectedAccessoryIds = new List<string>();
+		foreach(var kittyAccessoryModel in KittyAccessoryService.GetAll()) {
+			if(kittyAccessoryModel.kittyId == kittyModel.id) {
+				selectedAccessoryIds.Add(kittyAccessoryModel.accessoryId);
+			}
+		}
+		return AccessoryService.GetModelsByIds(selectedAccessoryIds);
+	}
+
 	public static List<AccessoryModel> GetSelectedAccessoriesForKitty(
 		KittyModel kittyModel
 	) {
