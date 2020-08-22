@@ -8,7 +8,7 @@ public class KittySelectScrollListScript : MonoBehaviour {
 	public GameObject scrollContent;
 	public GameObject kittyScrollContentItemPrefab;
 
-	private const bool VIEW_ALL_KITTIES = true;
+	private const bool VIEW_ALL_KITTIES = false;
 
 
 	// UNITY HOOKS

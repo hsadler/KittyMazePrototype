@@ -10,7 +10,7 @@ public class AccessorySelectScrollListScript : MonoBehaviour {
 
 	private List<GameObject> accessoryItems = new List<GameObject>();
 
-	private const bool VIEW_ALL_ACCESSORIES = true;
+	private const bool VIEW_ALL_ACCESSORIES = false;
 
 
 	// UNITY HOOKS

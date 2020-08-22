@@ -113,11 +113,21 @@ public class MazeSceneManager : MonoBehaviour {
 		int randomSelectionIndex = Random.Range(0, selectBetweenList.Count);
 		int selectedType = selectBetweenList[randomSelectionIndex];
 		if(selectedType == 1) {
-			// get random kitty for unlock
-			// TODO
+			// unlock random locked kitty
+			randomSelectionIndex = Random.Range(0, lockedKitties.Count);
+			var kittyToUnlock = lockedKitties[randomSelectionIndex];
+			kittyToUnlock.isUnlocked = true;
+			KittyService.Save(kittyToUnlock);
 		} else {
-			// get random accessory for unlock
-			// TODO
+			// unlock random accessory for kitty
+			randomSelectionIndex = Random.Range(0, lockedAccessoriesForKitty.Count);
+			var accessoryToUnlock = lockedAccessoriesForKitty[randomSelectionIndex];
+			var kittyAccessoryToUnlock = KittyAccessoryService.GetModelByKittyAndAccessoryCombination(
+				selectedKitty, 
+				accessoryToUnlock
+			);
+			kittyAccessoryToUnlock.isUnlocked = true;
+			KittyAccessoryService.Save(kittyAccessoryToUnlock);
 		}
 	}
 
