@@ -153,6 +153,7 @@ RectTransform:
   m_Children:
   - {fileID: 145439470}
   - {fileID: 2119093570}
+  - {fileID: 1794051748}
   m_Father: {fileID: 1308458468}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -230,6 +231,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 86550313}
     m_Modifications:
+    - target: {fileID: 1619641921968511736, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8ceb40d9c6b7479439016002ade81896,
+        type: 3}
     - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -338,7 +345,7 @@ PrefabInstance:
     - target: {fileID: 1619641921968511741, guid: 27b8654285c03f44f85bb308dbeccefc,
         type: 3}
       propertyPath: m_Name
-      value: GameButton
+      value: PlayButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27b8654285c03f44f85bb308dbeccefc, type: 3}
@@ -358,6 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 158465045}
   - component: {fileID: 158465046}
+  - component: {fileID: 158465047}
   m_Layer: 5
   m_Name: MazeModal
   m_TagString: Untagged
@@ -393,6 +401,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158465044}
   m_CullTransparentMesh: 0
+--- !u!114 &158465047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158465044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ec759f7c93bdc84dab5add4e140fcb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &390352870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -523,7 +543,7 @@ GameObject:
   - component: {fileID: 507639923}
   - component: {fileID: 507639922}
   m_Layer: 5
-  m_Name: Checkmark (1)
+  m_Name: Checkmark2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -561,7 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1285,6 +1305,137 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28cb285845059fc4db5efa056ec90192, type: 3}
+--- !u!1001 &1794051747
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 86550313}
+    m_Modifications:
+    - target: {fileID: 1619641921968511736, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e8ee62b80c1a6c643aef2617bb0a99dd,
+        type: 3}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1619641921968511741, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_Name
+      value: DressUpButton
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 27b8654285c03f44f85bb308dbeccefc, type: 3}
+--- !u!224 &1794051748 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1794051747}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1797608725
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,7 +1548,7 @@ GameObject:
   - component: {fileID: 1912213382}
   - component: {fileID: 1912213381}
   m_Layer: 5
-  m_Name: Checkmark
+  m_Name: Checkmark1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1435,7 +1586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1574,7 +1725,7 @@ GameObject:
   - component: {fileID: 2093919006}
   - component: {fileID: 2093919005}
   m_Layer: 5
-  m_Name: Checkmark (2)
+  m_Name: Checkmark3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1612,7 +1763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3490566, g: 0.3490566, b: 0.3490566, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1643,6 +1794,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 86550313}
     m_Modifications:
+    - target: {fileID: 1619641921968511736, guid: 27b8654285c03f44f85bb308dbeccefc,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3bd008ffbe1a8f7468d2ba65545f7601,
+        type: 3}
     - target: {fileID: 1619641921968511738, guid: 27b8654285c03f44f85bb308dbeccefc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1751,7 +1908,7 @@ PrefabInstance:
     - target: {fileID: 1619641921968511741, guid: 27b8654285c03f44f85bb308dbeccefc,
         type: 3}
       propertyPath: m_Name
-      value: GameButton (1)
+      value: HomeButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27b8654285c03f44f85bb308dbeccefc, type: 3}
