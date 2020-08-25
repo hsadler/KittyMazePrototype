@@ -12,6 +12,7 @@ public class MazeSceneManager : MonoBehaviour {
 	public GameObject mazeContainerPrefab;
 	public GameObject mazeCellPrefab;
 	public GameObject mazeWallPrefab;
+	public GameObject mazeModalGO;
 	
 	// data models
 	public Maze mazeModel;
@@ -35,13 +36,14 @@ public class MazeSceneManager : MonoBehaviour {
 	void Start() {
 		this.RenderMazeObjects();
 		this.PlacePlayerObject();
+		mazeModalGO.SetActive(false);
 	}
 
 	// INTERFACE METHODS
 
 	public void MazeComplete() {
-		this.UnlockRandomKittyOrAccessory();
-		this.ReloadMazeScene();
+		this.mazeModalGO.SetActive(true);
+		// this.UnlockRandomKittyOrAccessory();
 	}
 
 	// IMPLEMENTATION METHODS
@@ -131,10 +133,6 @@ public class MazeSceneManager : MonoBehaviour {
 			kittyAccessoryToUnlock.isUnlocked = true;
 			KittyAccessoryService.Save(kittyAccessoryToUnlock);
 		}
-	}
-
-	private void ReloadMazeScene() {
-		SceneManager.LoadScene("MazeScene");
 	}
 
 	
