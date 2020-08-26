@@ -2,7 +2,7 @@
 
 - TODO NEXT:
 	X poc unlock of kitty or accessory on maze completion
-	- mock maze-progression modal
+	X mock maze-progression modal
 	- implement maze-progression system
 	- implement full maze-progression modal functionality with maze-progression system
 

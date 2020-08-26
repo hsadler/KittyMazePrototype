@@ -424,7 +424,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressSectionGO: {fileID: 1929359450}
+  checkmark1GO: {fileID: 1912213379}
+  checkmark2GO: {fileID: 507639920}
+  checkmark3GO: {fileID: 2093919003}
   unlockItemSectionGO: {fileID: 1332682612}
+  unlockItemImage: {fileID: 818143510}
+  buttonsSectionGO: {fileID: 86550312}
   homeButtonGO: {fileID: 2119093571}
   dressUpButtonGO: {fileID: 1794051749}
 --- !u!1001 &390352870
