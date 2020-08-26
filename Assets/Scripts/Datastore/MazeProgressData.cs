@@ -2,7 +2,6 @@ using System.IO;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class MazeProgressData {
@@ -13,42 +12,26 @@ public class MazeProgressData {
 	private const string SAVE_DIR = "/";
 	private const string SAVE_FILE = "maze-progression.json";
 
-    // TODO: below is example code
-
-	// use primary asset name as key for lookups
-	private IDictionary<string, KittyModel> assetNameToModel;
+	private MazeProgressModel mazeProgressModel;
 
 
 	// CONSTRUCTOR
 
 	public MazeProgressData() {
-		this.assetNameToModel = new Dictionary<string, KittyModel>();
+		this.mazeProgressModel = new MazeProgressModel(0);
 		this.InitDirectories();
-		this.LoadRecords();
+		this.LoadRecord();
 	}
 
 	// INTERFACE METHODS
 
-	public IDictionary<string, KittyModel> GetAssetNameToModel() {
-		return this.assetNameToModel;
+	public MazeProgressModel GetModel() {
+		return this.mazeProgressModel;
 	}
 
-	public List<KittyModel> GetModels() {
-		return this.assetNameToModel.Values.ToList();
-	}
-
-	public void SaveModels(List<KittyModel> models) {
-		// foreach (var model in models) {
-		// 	Debug.Log(model.primaryAssetAddress + " isSelected: " + model.isSelected.ToString());
-		// }
-		// add models if they don't yet exist
-		foreach (var kittyModel in models) {
-			if(!this.assetNameToModel.ContainsKey(kittyModel.primaryAssetName)) {
-				this.assetNameToModel.Add(kittyModel.primaryAssetName, kittyModel);
-			}
-		}
-		// commit models to json file
-		this.SynchRecordsToJsonFile();
+	public void SaveModel(MazeProgressModel model) {
+		this.mazeProgressModel = model;
+		this.SynchRecordToJsonFile();
 	}
 
 	// IMPLEMENTATION METHODS
@@ -60,31 +43,26 @@ public class MazeProgressData {
 		}
 	}
 
-	private void LoadRecords() {
+	private void LoadRecord() {
 		string savePath = GetSavePath();
 		if(File.Exists(savePath)) {
 			string json = File.ReadAllText(savePath);
-			// Debug.Log("Loaded json: " + json);
-			KittySave kittySave = JsonUtility.FromJson<KittySave>(json);
-			foreach (var kittyModel in kittySave.models) {
-				// Debug.Log("kitty model asset name: " + kittyModel.assetName);
-				this.assetNameToModel.Add(
-					kittyModel.primaryAssetName,
-					kittyModel
-				);
-			}
+			Debug.Log("Loaded json: " + json);
+			MazeProgressSave mazeProgressSave = JsonUtility.FromJson<MazeProgressSave>(json);
+			this.mazeProgressModel = new MazeProgressModel(mazeProgressSave.currentProgress);
+			Debug.Log("maze progress save current progress: " + this.mazeProgressModel.currentProgress.ToString());
 		}
 	}
 
-	private void SynchRecordsToJsonFile() {
+	private void SynchRecordToJsonFile() {
 		this.InitDirectories();
-		var kittySave = new KittySave(this.GetModels());
+		var mazeProgressSave = new MazeProgressSave(this.mazeProgressModel.currentProgress);
 		string json = JsonUtility.ToJson(
-			kittySave,
+			mazeProgressSave,
 			true
 		);
-		// Debug.Log("SynchRecordsToJsonFile filepath: " + this.GetSavePath());
-		// Debug.Log("SynchRecordsToJsonFile json: " + json);
+		Debug.Log("SynchRecordsToJsonFile filepath: " + this.GetSavePath());
+		Debug.Log("SynchRecordsToJsonFile json: " + json);
 		File.WriteAllText(this.GetSavePath(), json, Encoding.UTF8);
 	}
 

@@ -12,10 +12,10 @@ public class MazeProgressModel {
 
 
 	public MazeProgressModel(
-        int currentProgress
-    ) {
-        this.currentProgress = currentProgress;
-    }
+		int currentProgress
+	) {
+		this.currentProgress = currentProgress;
+	}
 
 	// INTERFACE METHODS
 

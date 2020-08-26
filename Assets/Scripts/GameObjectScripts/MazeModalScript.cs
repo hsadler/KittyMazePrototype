@@ -17,14 +17,17 @@ public class MazeModalScript : MonoBehaviour {
 
 	public GameObject buttonsSectionGO;
 	public GameObject homeButtonGO;
-	public GameObject dressUpButtonGO; 
+	public GameObject dressUpButtonGO;
+
+	public bool itemIsUnlocked = false;
 
 
 	// UNITY HOOKS
 
 	void Start() {
-		unlockItemSectionGO.SetActive(false);
-		buttonsSectionGO.SetActive(false);
+		this.DoMazeProgressProcesses();
+		this.unlockItemSectionGO.SetActive(false);
+		this.buttonsSectionGO.SetActive(false);
 	}
 
 	void Update() {}
@@ -45,5 +48,21 @@ public class MazeModalScript : MonoBehaviour {
 
 	// IMPLEMENTATION METHODS
 
+	private void DoMazeProgressProcesses() {
+		MazeProgressModel mazeProgressModel = MazeProgressService.GetModel();
+		mazeProgressModel.currentProgress += 1;
+		if(mazeProgressModel.currentProgress == MazeProgressModel.MAX_PROGRESS) {
+			this.itemIsUnlocked = true;
+			mazeProgressModel.currentProgress = 0;
+		}
+		MazeProgressService.Save(mazeProgressModel);
+		print(
+			"maze progress: " + 
+			mazeProgressModel.currentProgress.ToString() + 
+			"/" + 
+			MazeProgressModel.MAX_PROGRESS.ToString()
+		);
+		print("item is unlocked: " + this.itemIsUnlocked.ToString());
+	}
 
 }

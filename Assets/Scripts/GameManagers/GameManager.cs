@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	public KittyData kittyData;
 	public AccessoryData accessoryData;
 	public KittyAccessoryData kittyAccessoryData;
+	public MazeProgressData mazeProgressData;
 	
 	public DataStartup dataStartup;
 	public UnityEvents unityEvents;
@@ -43,6 +44,7 @@ public class GameManager : MonoBehaviour {
 		this.kittyData = new KittyData();
 		this.accessoryData = new AccessoryData();
 		this.kittyAccessoryData = new KittyAccessoryData();
+		this.mazeProgressData = new MazeProgressData();
 		// execute data startup processes
 		this.dataStartup = new DataStartup();
 		this.dataStartup.ExecuteStartupProcesses();

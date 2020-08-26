@@ -6,11 +6,11 @@ public struct MazeProgressSave {
 	// SAVE STRUCT FOR MAZE-PROGRESS DATA
 
 
-	private int thing;
+	public int currentProgress;
 
 
-	public MazeProgressSave(int thing) {
-		this.thing = thing;
+	public MazeProgressSave(int currentProgress) {
+		this.currentProgress = currentProgress;
 	}
 
 
