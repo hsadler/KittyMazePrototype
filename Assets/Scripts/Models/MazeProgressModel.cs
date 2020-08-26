@@ -7,6 +7,7 @@ public class MazeProgressModel {
 	// MODEL FOR MAZE PROGRESS
 
 
+	public const int MAX_PROGRESS = 3;
 	public int currentProgress;
 
 

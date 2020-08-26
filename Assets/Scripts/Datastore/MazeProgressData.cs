@@ -21,7 +21,7 @@ public class MazeProgressData {
 
 	// CONSTRUCTOR
 
-	public KittyData() {
+	public MazeProgressData() {
 		this.assetNameToModel = new Dictionary<string, KittyModel>();
 		this.InitDirectories();
 		this.LoadRecords();
