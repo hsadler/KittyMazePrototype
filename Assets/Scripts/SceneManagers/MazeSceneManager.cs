@@ -43,7 +43,6 @@ public class MazeSceneManager : MonoBehaviour {
 
 	public void MazeComplete() {
 		this.mazeModalGO.SetActive(true);
-		// this.UnlockRandomKittyOrAccessory();
 	}
 
 	// IMPLEMENTATION METHODS
@@ -80,59 +79,6 @@ public class MazeSceneManager : MonoBehaviour {
 			-1.5f
 		); 
 		GameObject.Instantiate(playerObjectPrefab, pos, Quaternion.identity);
-	}
-
-	// chose, at random, one item among the 
-	// locked accessories and locked kitties for unlock
-	private void UnlockRandomKittyOrAccessory() {
-		print("Unlocking random kitty or accessory...");
-		// chance list for calculating selection of kitty or accessory for unlock
-		var selectBetweenList = new List<int>(); 
-		// gather objects
-		var allKitties = KittyService.GetAll();
-		var selectedKitty = KittyService.GetSelected();
-		var accessoriesForKitty = AccessoryService.GetAccessoriesForKitty(selectedKitty);
-		// filter for locked kitties and accessories
-		var lockedKitties = new List<KittyModel>();
-		foreach(var kitty in allKitties) {
-			if(!kitty.isUnlocked) {
-				lockedKitties.Add(kitty);
-				selectBetweenList.Add(1);
-			}
-		}
-		var lockedAccessoriesForKitty = new List<AccessoryModel>();
-		foreach (var accessory in accessoriesForKitty) {
-			var kittyAccessory = KittyAccessoryService.GetModelByKittyAndAccessoryCombination(
-				selectedKitty, 
-				accessory
-			);
-			if(!kittyAccessory.isUnlocked) {
-				lockedAccessoriesForKitty.Add(accessory);
-				selectBetweenList.Add(2);
-			}
-		}
-		// select whether kitty or accessory will be unlocked
-		int randomSelectionIndex = Random.Range(0, selectBetweenList.Count);
-		int selectedType = selectBetweenList[randomSelectionIndex];
-		print("selectBetweenList: " + System.String.Join(",", selectBetweenList));
-		print("selected Type: " + selectedType.ToString());
-		if(selectedType == 1) {
-			// unlock random locked kitty
-			randomSelectionIndex = Random.Range(0, lockedKitties.Count);
-			var kittyToUnlock = lockedKitties[randomSelectionIndex];
-			kittyToUnlock.isUnlocked = true;
-			KittyService.Save(kittyToUnlock);
-		} else {
-			// unlock random accessory for kitty
-			randomSelectionIndex = Random.Range(0, lockedAccessoriesForKitty.Count);
-			var accessoryToUnlock = lockedAccessoriesForKitty[randomSelectionIndex];
-			var kittyAccessoryToUnlock = KittyAccessoryService.GetModelByKittyAndAccessoryCombination(
-				selectedKitty, 
-				accessoryToUnlock
-			);
-			kittyAccessoryToUnlock.isUnlocked = true;
-			KittyAccessoryService.Save(kittyAccessoryToUnlock);
-		}
 	}
 
 	
