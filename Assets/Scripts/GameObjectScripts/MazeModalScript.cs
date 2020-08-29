@@ -19,16 +19,18 @@ public class MazeModalScript : MonoBehaviour {
 	public GameObject homeButtonGO;
 	public GameObject dressUpButtonGO;
 
-	public int mazeProgress = 0;
-	public bool itemIsUnlocked = false;
+	private int mazeProgress = 0;
+	private bool itemIsUnlocked = false;
+	private KittyModel unlockedKittyModel;
+	private AccessoryModel unlockedAccessoryModel;
 	
 
 	// UNITY HOOKS
 
 	void Start() {
-		this.DoMazeProgressProcesses();
 		this.unlockItemSectionGO.SetActive(false);
 		this.buttonsSectionGO.SetActive(true);
+		this.DoMazeProgressProcesses();
 	}
 	
 	void Update() {
@@ -109,16 +111,16 @@ public class MazeModalScript : MonoBehaviour {
 		if (selectedType == 1) {
 			// unlock random locked kitty
 			randomSelectionIndex = Random.Range(0, lockedKitties.Count);
-			var kittyToUnlock = lockedKitties[randomSelectionIndex];
-			kittyToUnlock.isUnlocked = true;
-			KittyService.Save(kittyToUnlock);
+			this.unlockedKittyModel = lockedKitties[randomSelectionIndex];
+			this.unlockedKittyModel.isUnlocked = true;
+			KittyService.Save(this.unlockedKittyModel);
 		} else {
 			// unlock random accessory for kitty
 			randomSelectionIndex = Random.Range(0, lockedAccessoriesForKitty.Count);
-			var accessoryToUnlock = lockedAccessoriesForKitty[randomSelectionIndex];
+			this.unlockedAccessoryModel= lockedAccessoriesForKitty[randomSelectionIndex];
 			var kittyAccessoryToUnlock = KittyAccessoryService.GetModelByKittyAndAccessoryCombination(
 				selectedKitty,
-				accessoryToUnlock
+				this.unlockedAccessoryModel
 			);
 			kittyAccessoryToUnlock.isUnlocked = true;
 			KittyAccessoryService.Save(kittyAccessoryToUnlock);
@@ -141,8 +143,17 @@ public class MazeModalScript : MonoBehaviour {
 	}
 
 	private void RenderItemUnlock() {
-		// stub
-		print("rendering item unlock...");
+		this.progressSectionGO.SetActive(false);
+		this.unlockItemSectionGO.SetActive(true);
+		if (this.unlockedKittyModel != null) {
+			print("displaying unlocked kitty sprite...");
+			Sprite kittySprite = AssetService.GetSprite(unlockedKittyModel.thumbAssetAddress);
+			this.unlockItemImage.sprite = kittySprite;
+		} else if (this.unlockedAccessoryModel != null) {
+			print("displaying unlocked accessory sprite...");
+			Sprite accessorySprite = AssetService.GetSprite(unlockedAccessoryModel.thumbAssetAddress);
+			this.unlockItemImage.sprite = accessorySprite;
+		}
 	}
 
 	private void RenderButtons() {
