@@ -1,21 +1,27 @@
 
 
 - TODO NEXT:
-	X poc unlock of kitty or accessory on maze completion
-	X mock maze-progression modal
-	- implement maze-progression system
-	- implement full maze-progression modal functionality with maze-progression system
-
-
-TODO NEXT PHASE:
-	- polish
+	- reskin buttons
+	- reskin main menu
+	- reskin dressup
+	- reskin maze
+	- reskin mase-modal
+	- modal animations
 	- iterate on style
 	- add more kitties and accessories
 
 
+TODO NEXT PHASE:
+	- variations on maze start and end points
+	- consider single accessory unlock per kitty unlock
+		(so that kitties always have at least one accessory)
+	- highlight selected kitty and accessories in scroll lists
+	- kitty footprints in maze
+
+
 - SYSTEMS:
-	- maze progression
-	- unlock new accessory or new kitty
+	X maze progression
+	X unlock new accessory or new kitty
 
 
 - UX:

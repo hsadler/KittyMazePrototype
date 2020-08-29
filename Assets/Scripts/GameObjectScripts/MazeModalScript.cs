@@ -77,7 +77,6 @@ public class MazeModalScript : MonoBehaviour {
 	// chose, at random, one item among the 
 	// locked accessories and locked kitties for unlock
 	private void UnlockRandomKittyOrAccessory() {
-		//print("Unlocking random kitty or accessory...");
 		// chance list for calculating selection of kitty or accessory for unlock
 		var selectBetweenList = new List<int>();
 		// gather objects
@@ -106,8 +105,6 @@ public class MazeModalScript : MonoBehaviour {
 		// select whether kitty or accessory will be unlocked
 		int randomSelectionIndex = Random.Range(0, selectBetweenList.Count);
 		int selectedType = selectBetweenList[randomSelectionIndex];
-		//print("selectBetweenList: " + System.String.Join(",", selectBetweenList));
-		//print("selected Type: " + selectedType.ToString());
 		if (selectedType == 1) {
 			// unlock random locked kitty
 			randomSelectionIndex = Random.Range(0, lockedKitties.Count);
@@ -146,11 +143,9 @@ public class MazeModalScript : MonoBehaviour {
 		this.progressSectionGO.SetActive(false);
 		this.unlockItemSectionGO.SetActive(true);
 		if (this.unlockedKittyModel != null) {
-			print("displaying unlocked kitty sprite...");
 			Sprite kittySprite = AssetService.GetSprite(unlockedKittyModel.thumbAssetAddress);
 			this.unlockItemImage.sprite = kittySprite;
 		} else if (this.unlockedAccessoryModel != null) {
-			print("displaying unlocked accessory sprite...");
 			Sprite accessorySprite = AssetService.GetSprite(unlockedAccessoryModel.thumbAssetAddress);
 			this.unlockItemImage.sprite = accessorySprite;
 		}
