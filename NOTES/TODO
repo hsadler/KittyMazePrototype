@@ -1,9 +1,20 @@
 
 
 - TODO NEXT:
-	- reskin buttons
-	- reskin main menu
-	- reskin dressup
+	- reskin buttons:
+		- go-to-maze
+		- go-to-dressup
+		- go-back
+		- go-to-home
+		- play
+		- kitties-scroll-list
+		- accessories-scroll-list
+	- reskin main menu scene:
+		- background
+		- header (maybe)
+	- reskin dressup scene:
+		- background
+		- scroll list
 	- reskin maze
 	- reskin mase-modal
 	- modal animations
