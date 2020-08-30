@@ -34,5 +34,8 @@ sysinfo.txt
 .vs
 .idea/
 
+# Mac generated files
+.DS_Store
+
 # Third Party Assets
 */Thirdparty/*
