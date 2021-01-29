@@ -39,3 +39,6 @@ sysinfo.txt
 
 # Third Party Assets
 */Thirdparty/*
+
+# mono crash
+mono_crash.*
