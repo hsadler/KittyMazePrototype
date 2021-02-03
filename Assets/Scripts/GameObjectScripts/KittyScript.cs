@@ -91,7 +91,7 @@ public class KittyScript : MonoBehaviour {
 		foreach(var partDict in this.displayLookup.Values) {
 			foreach(var image in partDict.Values) {
 				image.gameObject.SetActive(false);
-			} 
+			}
 		}
 		// TODO: implementation of this method is unoptimized, utilize lookup batching in a future refactor 
 		KittyModel kittyModel = KittyService.GetSelected();

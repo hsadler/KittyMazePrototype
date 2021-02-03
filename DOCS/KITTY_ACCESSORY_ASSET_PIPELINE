@@ -1,0 +1,31 @@
+
+
+KITTY ACCESSORY ASSET PIPELINE
+
+
+Creation and Import Process:
+    1. Create assets in drawing app.
+    2. Export and email.
+    3. Place the assets into the /Resources directory of the repo.
+    4. Start up the unity editor to test.
+
+
+Note:
+    - Assets are split into two groups:
+        1. Kitty
+        2. Accessory
+    - These groups are split into two sub-groups:
+        1. Normal
+        2. Thumb
+    - Kitty assets can be placed directy into /Resources/Kitty or 
+        /Resources/KittyThumb directories
+    - Accessory assets must be placed into directories organized as follows:
+        (L1, M1, and N1 control the depth at which the accessories appear)
+        /Resources/Accessory or /Resources/AccessoryThumb
+            - Body
+            - Feet
+            - Head
+                - L1
+                - M1
+                - N1
+                
