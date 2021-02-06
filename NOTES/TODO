@@ -3,7 +3,7 @@
 - TODO NEXT:
 	X write docs for kitty/accessory asset creation and import pipeline
 	- add testing functionality to game:
-		- see all kitties and accessories
+		X see all kitties and accessories
 		- immediately finish maze
 	- reskin buttons:
 		- go-to-maze
