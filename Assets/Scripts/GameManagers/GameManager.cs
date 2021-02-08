@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
 	
 	public DataStartup dataStartup;
 	public UnityEvents unityEvents;
+	public AdminControl adminControl;
 
 
 	// the static reference to the singleton instance
@@ -36,6 +37,15 @@ public class GameManager : MonoBehaviour {
 
 	// INTERFACE METHODS
 
+	public void ToggleShowAllKittiesAndAccessories() {
+        this.adminControl.showAllKittiesAndAccessories = 
+			!this.adminControl.showAllKittiesAndAccessories;
+    }
+
+    public void ToggleEasyMazeMode() {
+        this.adminControl.easyMazeMode = !this.adminControl.easyMazeMode;
+    }
+
 	// IMPLEMENTATION METHODS
 
 	private void Init() {
@@ -48,8 +58,10 @@ public class GameManager : MonoBehaviour {
 		// execute data startup processes
 		this.dataStartup = new DataStartup();
 		this.dataStartup.ExecuteStartupProcesses();
-		// instantiate unity event object
+		// instantiate unity events object
 		this.unityEvents = new UnityEvents();
+		// instantiate admin control object
+		this.adminControl = new AdminControl();
 	}
 
 

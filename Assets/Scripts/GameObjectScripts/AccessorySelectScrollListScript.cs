@@ -10,8 +10,6 @@ public class AccessorySelectScrollListScript : MonoBehaviour {
 
 	private List<GameObject> accessoryItems = new List<GameObject>();
 
-	private const bool VIEW_ALL_ACCESSORIES = false;
-
 
 	// UNITY HOOKS
 
@@ -42,10 +40,12 @@ public class AccessorySelectScrollListScript : MonoBehaviour {
 			accessoryIdToKittyAccessoryModel.Add(kittyAccessoryModel.accessoryId, kittyAccessoryModel);
 		}
 		List<AccessoryModel> accessories = AccessoryService.GetAll();
+		bool viewAll = GameManager.instance.adminControl.showAllKittiesAndAccessories;
+		Debug.Log("View all accessories: " + viewAll.ToString());
 		foreach (var accessoryModel in accessories) {
 			var kittyAccessoryModel = accessoryIdToKittyAccessoryModel[accessoryModel.id];
 			// create accessory item per unlocked accessory item for currently selected kitty
-			if(kittyAccessoryModel.isUnlocked || VIEW_ALL_ACCESSORIES) {
+			if(kittyAccessoryModel.isUnlocked || viewAll) {
 				GameObject accessoryScrollContentItem = Instantiate(
 					accessoryScrollContentItemPrefab, 
 					scrollContent.transform
