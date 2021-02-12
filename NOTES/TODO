@@ -4,6 +4,7 @@
 	X write docs for kitty/accessory asset creation and import pipeline
 	- add testing functionality to game:
 		X see all kitties and accessories
+		X delete game save data
 		- immediately finish maze
 	- reskin buttons:
 		- go-to-maze

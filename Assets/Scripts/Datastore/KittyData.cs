@@ -49,6 +49,11 @@ public class KittyData {
 		this.SynchRecordsToJsonFile();
 	}
 
+	public void DeleteSavedDataFile() {
+		// Debug.Log("Deleting Kitty Data JSON file");
+		File.Delete(this.GetSavePath());
+	}
+
 	// IMPLEMENTATION METHODS
 
 	private void InitDirectories() {
@@ -81,7 +86,7 @@ public class KittyData {
 			kittySave,
 			true
 		);
-		// Debug.Log("SynchRecordsToJsonFile filepath: " + this.GetSavePath());
+		Debug.Log("SynchRecordsToJsonFile filepath: " + this.GetSavePath());
 		// Debug.Log("SynchRecordsToJsonFile json: " + json);
 		File.WriteAllText(this.GetSavePath(), json, Encoding.UTF8);
 	}
