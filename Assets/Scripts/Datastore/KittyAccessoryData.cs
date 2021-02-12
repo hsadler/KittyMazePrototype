@@ -58,6 +58,11 @@ public class KittyAccessoryData {
 		return kittyModel.id + "_" + accessoryModel.id;
 	}
 
+	public void DeleteSavedDataFile() {
+		// Debug.Log("Deleting Kitty Accessory Data JSON file");
+		File.Delete(this.GetSavePath());
+	}
+
 	// IMPLEMENTATION METHODS
 
 	private void InitDirectories() {
@@ -89,6 +94,7 @@ public class KittyAccessoryData {
 			kittyAccessorySave,
 			true
 		);
+		Debug.Log("SynchRecordsToJsonFile filepath: " + this.GetSavePath());
 		// Debug.Log("SynchRecordsToJsonFile json: " + json);
 		File.WriteAllText(this.GetSavePath(), json, Encoding.UTF8);
 	}

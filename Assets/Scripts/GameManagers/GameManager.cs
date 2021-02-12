@@ -46,6 +46,13 @@ public class GameManager : MonoBehaviour {
         this.adminControl.easyMazeMode = !this.adminControl.easyMazeMode;
     }
 
+	public void ClearSaves() {
+		// Debug.Log("Clearing Saves...");
+		this.kittyData.DeleteSavedDataFile();
+		this.kittyAccessoryData.DeleteSavedDataFile();
+		this.Init();
+	}
+
 	// IMPLEMENTATION METHODS
 
 	private void Init() {
