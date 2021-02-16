@@ -14,7 +14,7 @@ public class KittySelectScrollListScript : MonoBehaviour {
 	void Start() {
 		List<KittyModel> kitties = KittyService.GetAll();
 		bool viewAll = GameManager.instance.adminControl.showAllKittiesAndAccessories;
-		Debug.Log("View all kitties: " + viewAll.ToString());
+		// Debug.Log("View all kitties: " + viewAll.ToString());
 		foreach (var kittyModel in kitties) {
 			if(kittyModel.isUnlocked || viewAll) {
 				GameObject kittyScrollContentItem = Instantiate(

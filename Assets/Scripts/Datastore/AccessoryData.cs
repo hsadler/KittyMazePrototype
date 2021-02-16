@@ -46,6 +46,11 @@ public class AccessoryData {
 		this.SynchRecordsToJsonFile();
 	}
 
+	public void DeleteSavedDataFile() {
+		// Debug.Log("Deleting Accessory Data JSON file");
+		File.Delete(this.GetSavePath());
+	}
+
 	// IMPLEMENTATION METHODS
 
 	private void InitDirectories() {

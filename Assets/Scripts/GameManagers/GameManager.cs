@@ -49,7 +49,9 @@ public class GameManager : MonoBehaviour {
 	public void ClearSaves() {
 		// Debug.Log("Clearing Saves...");
 		this.kittyData.DeleteSavedDataFile();
+		this.accessoryData.DeleteSavedDataFile();
 		this.kittyAccessoryData.DeleteSavedDataFile();
+		this.mazeProgressData.DeleteSavedDataFile();
 		this.Init();
 	}
 

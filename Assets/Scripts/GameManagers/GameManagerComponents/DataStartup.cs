@@ -123,6 +123,7 @@ public class DataStartup {
 					Resources.LoadAll(thumbAddressDir, typeof(Sprite))
 					.Cast<Sprite>()
 					.ToList();
+				// Debug.Log("count accessory thumb sprites: " + accessoryThumbSprites.Count.ToString());
 				foreach(var accessoryThumbSprite in accessoryThumbSprites) {
 					string thumbAddress = AccessoryService.GetFormattedThumbAssetAddress(
 						accessoryGroup,

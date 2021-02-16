@@ -34,6 +34,11 @@ public class MazeProgressData {
 		this.SynchRecordToJsonFile();
 	}
 
+	public void DeleteSavedDataFile() {
+		// Debug.Log("Deleting Maze Progress Data JSON file");
+		File.Delete(this.GetSavePath());
+	}
+
 	// IMPLEMENTATION METHODS
 
 	private void InitDirectories() {
@@ -47,10 +52,10 @@ public class MazeProgressData {
 		string savePath = GetSavePath();
 		if(File.Exists(savePath)) {
 			string json = File.ReadAllText(savePath);
-			Debug.Log("Loaded json: " + json);
+			// Debug.Log("Loaded json: " + json);
 			MazeProgressSave mazeProgressSave = JsonUtility.FromJson<MazeProgressSave>(json);
 			this.mazeProgressModel = new MazeProgressModel(mazeProgressSave.currentProgress);
-			Debug.Log("maze progress save current progress: " + this.mazeProgressModel.currentProgress.ToString());
+			// Debug.Log("maze progress save current progress: " + this.mazeProgressModel.currentProgress.ToString());
 		}
 	}
 
@@ -61,8 +66,8 @@ public class MazeProgressData {
 			mazeProgressSave,
 			true
 		);
-		Debug.Log("SynchRecordsToJsonFile filepath: " + this.GetSavePath());
-		Debug.Log("SynchRecordsToJsonFile json: " + json);
+		// Debug.Log("SynchRecordsToJsonFile filepath: " + this.GetSavePath());
+		// Debug.Log("SynchRecordsToJsonFile json: " + json);
 		File.WriteAllText(this.GetSavePath(), json, Encoding.UTF8);
 	}
 

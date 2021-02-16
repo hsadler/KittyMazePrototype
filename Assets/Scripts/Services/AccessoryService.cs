@@ -11,9 +11,18 @@ public class AccessoryService {
 	private static string thumbAssetNamespace = "AccessoryThumb";
 
 	public static List<string> accessoryGroups = new List<string>
-	{ "Head", "Feet", "Body", "Tail" };
+	{ 
+		"Head", 
+		"Feet", 
+		"Body", 
+		"Tail" 
+	};
 	public static List<string> accessorySubGroups = new List<string>
-	{ "L1", "M1", "N1" };
+	{ 
+		"L1", 
+		"M1", 
+		"N1" 
+	};
 
 
 	public static AccessoryModel GetModelByAssetName(string assetName) {

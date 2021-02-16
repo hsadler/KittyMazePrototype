@@ -86,7 +86,7 @@ public class KittyData {
 			kittySave,
 			true
 		);
-		Debug.Log("SynchRecordsToJsonFile filepath: " + this.GetSavePath());
+		// Debug.Log("SynchRecordsToJsonFile filepath: " + this.GetSavePath());
 		// Debug.Log("SynchRecordsToJsonFile json: " + json);
 		File.WriteAllText(this.GetSavePath(), json, Encoding.UTF8);
 	}

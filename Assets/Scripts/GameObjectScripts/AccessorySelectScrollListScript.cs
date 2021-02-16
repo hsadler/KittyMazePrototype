@@ -40,8 +40,9 @@ public class AccessorySelectScrollListScript : MonoBehaviour {
 			accessoryIdToKittyAccessoryModel.Add(kittyAccessoryModel.accessoryId, kittyAccessoryModel);
 		}
 		List<AccessoryModel> accessories = AccessoryService.GetAll();
+		// Debug.Log("Count accessories for scroll list: " + accessories.Count.ToString());
 		bool viewAll = GameManager.instance.adminControl.showAllKittiesAndAccessories;
-		Debug.Log("View all accessories: " + viewAll.ToString());
+		// Debug.Log("View all accessories: " + viewAll.ToString());
 		foreach (var accessoryModel in accessories) {
 			var kittyAccessoryModel = accessoryIdToKittyAccessoryModel[accessoryModel.id];
 			// create accessory item per unlocked accessory item for currently selected kitty
